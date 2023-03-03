@@ -1,0 +1,8 @@
+CHILDES/
+expt_adapt/
+expt_meta_train/
+formal_languages/
+__pycache__/
+targeted_evals/
+.venv/
+Zorro/
