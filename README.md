@@ -25,10 +25,8 @@ pip install higher
 # Description of the pipeline
 
 1. First, you need to create a dataloader. The dataloader should contain 3 data splits (training, validation, and test). Each split should be an iterator where, as you iterate over it, it returns one batch at a time. Dataloaders are defined in `dataloading.py`
-
-    a. For standard training, each batch will be one input to your model. It should be a dictionary containing the input as well as the target output that this input should have. An example of a standard dataloader is `LMDatasetFromFiles`.
-
-    b. For meta training, each batch corresponds to one episode of metatraining. Therefore, it should contain both the training set for this episode and the test set for this episode. Specifically, the batch will be a dictionary with the following keys: `training_batches`: a list of batches (set up just like a standard batch in 1a - each of these batches should contain the model's input for that batch and the target output). `test_input_ids`: The inputs for the test set for this episode. `test_labels`: The labels for the test set for this episode. An example of a meta dataloader is `MetaLMDataset`.
+        a. For standard training, each batch will be one input to your model. It should be a dictionary containing the input as well as the target output that this input should have. An example of a standard dataloader is `LMDatasetFromFiles`.
+        b. For meta training, each batch corresponds to one episode of metatraining. Therefore, it should contain both the training set for this episode and the test set for this episode. Specifically, the batch will be a dictionary with the following keys: `training_batches`: a list of batches (set up just like a standard batch in 1a - each of these batches should contain the model's input for that batch and the target output). `test_input_ids`: The inputs for the test set for this episode. `test_labels`: The labels for the test set for this episode. An example of a meta dataloader is `MetaLMDataset`.
 
 2. Then, you need to create a model. The model should take in a single standard batch (as defined in 1a: a dictionary containing the inputs and the target outputs for that batch). Then it should return the model's predicted output and the model's loss (when its predicted output is compared to the target output). `RNNLM` gives an example of a model. 
 
