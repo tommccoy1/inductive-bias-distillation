@@ -1,0 +1,13 @@
+2023-05-01 06:08:38,120 INFO     Namespace(directory='CHILDES/pretraining_quarter_9/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=32, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_9', pretrained_vocab_size=15, n_epochs=512, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden32_pretraining_quarter_yespre9_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 06:08:47,983 INFO     Vocab size: 13157
+2023-05-01 06:08:49,535 INFO     Model size: 0.0M parameters
+2023-05-01 06:08:51,584 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_9
+2023-05-01 06:08:51,620 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden32_pretraining_quarter_yespre9_0
+2023-05-01 06:08:52,630 INFO     Validation loss: 3.871083403933628
+2023-05-01 06:08:52,630 INFO     Validation perplexity: 47.99435519717597
+2023-05-01 06:08:54,602 INFO     Validation (strided) loss: 3.8615046042297476
+2023-05-01 06:08:54,602 INFO     Validation (strided) perplexity: 47.536821691081045
+2023-05-01 06:08:55,445 INFO     Test loss: 3.800807256459211
+2023-05-01 06:08:55,446 INFO     Test perplexity: 44.737284382191255
+2023-05-01 06:13:08,660 INFO     Test (strided) loss: 3.790920823665882
+2023-05-01 06:13:08,661 INFO     Test (strided) perplexity: 44.29717138534456

@@ -1,0 +1,24 @@
+2023-05-13 13:53:25,161 INFO     Namespace(directory='CHILDES/pretraining_full_18/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name=None, pretrained_vocab_size=None, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='adapt_params1_hidden1024_pretraining_full_nopre_18', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_big=False, eval_recursion_big2=False, eval_recursion_big3=False, eval_recursion_big4=False, eval_priming=True, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='priming')
+2023-05-13 13:53:39,675 INFO     Vocab size: 17096
+2023-05-13 13:53:41,652 INFO     Model size: 34.3M parameters
+2023-05-13 13:53:49,685 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/adapt_params1_hidden1024_pretraining_full_nopre_18
+2023-05-13 13:53:52,829 INFO     priming_long AVG SINGLE NEGATIVE LOGPROB: 5.532
+2023-05-13 13:53:52,829 INFO     priming_long AVG DOUBLE NEGATIVE LOGPROB: 4.894
+2023-05-13 13:53:52,829 INFO     priming_long AVG SINGLE PERPLEXITY: 284.71
+2023-05-13 13:53:52,829 INFO     priming_long AVG DOUBLE PERPLEXITY: 151.066
+2023-05-13 13:53:55,804 INFO     priming_long_implausible AVG SINGLE NEGATIVE LOGPROB: 5.917
+2023-05-13 13:53:55,805 INFO     priming_long_implausible AVG DOUBLE NEGATIVE LOGPROB: 5.302
+2023-05-13 13:53:55,805 INFO     priming_long_implausible AVG SINGLE PERPLEXITY: 409.938
+2023-05-13 13:53:55,805 INFO     priming_long_implausible AVG DOUBLE PERPLEXITY: 222.664
+2023-05-13 13:53:57,873 INFO     priming_short AVG SINGLE NEGATIVE LOGPROB: 5.72
+2023-05-13 13:53:57,873 INFO     priming_short AVG DOUBLE NEGATIVE LOGPROB: 4.508
+2023-05-13 13:53:57,873 INFO     priming_short AVG SINGLE PERPLEXITY: 392.403
+2023-05-13 13:53:57,873 INFO     priming_short AVG DOUBLE PERPLEXITY: 119.797
+2023-05-13 13:53:59,953 INFO     priming_short_implausible AVG SINGLE NEGATIVE LOGPROB: 6.109
+2023-05-13 13:53:59,953 INFO     priming_short_implausible AVG DOUBLE NEGATIVE LOGPROB: 4.972
+2023-05-13 13:53:59,953 INFO     priming_short_implausible AVG SINGLE PERPLEXITY: 564.726
+2023-05-13 13:53:59,953 INFO     priming_short_implausible AVG DOUBLE PERPLEXITY: 183.557
+2023-05-13 13:54:04,017 INFO     Validation loss: 3.1027710297391367
+2023-05-13 13:54:04,017 INFO     Validation perplexity: 22.259547768023896
+2023-05-13 13:54:12,152 INFO     Validation (strided) loss: 3.0737690763127663
+2023-05-13 13:54:12,152 INFO     Validation (strided) perplexity: 21.623248953973302

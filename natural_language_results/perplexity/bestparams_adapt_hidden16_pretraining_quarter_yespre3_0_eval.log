@@ -1,0 +1,13 @@
+2023-05-01 04:04:39,814 INFO     Namespace(directory='CHILDES/pretraining_quarter_3/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_3', pretrained_vocab_size=15, n_epochs=512, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_quarter_yespre3_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 04:04:50,305 INFO     Vocab size: 13277
+2023-05-01 04:04:51,841 INFO     Model size: 0.0M parameters
+2023-05-01 04:04:53,885 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_3
+2023-05-01 04:04:53,893 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_quarter_yespre3_0
+2023-05-01 04:04:54,895 INFO     Validation loss: 4.1554386422990754
+2023-05-01 04:04:54,895 INFO     Validation perplexity: 63.77993499017384
+2023-05-01 04:04:56,941 INFO     Validation (strided) loss: 4.151507529284412
+2023-05-01 04:04:56,941 INFO     Validation (strided) perplexity: 63.529701028902785
+2023-05-01 04:04:57,781 INFO     Test loss: 4.082972886014769
+2023-05-01 04:04:57,781 INFO     Test perplexity: 59.32156421457873
+2023-05-01 04:09:23,125 INFO     Test (strided) loss: 4.079471775082387
+2023-05-01 04:09:23,126 INFO     Test (strided) perplexity: 59.11423598892166

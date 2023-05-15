@@ -1,0 +1,13 @@
+2023-05-01 07:46:55,803 INFO     Namespace(directory='CHILDES/pretraining_full_5/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=32, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_5', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden32_pretraining_full_yespre5_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 07:47:09,363 INFO     Vocab size: 17096
+2023-05-01 07:47:10,927 INFO     Model size: 0.0M parameters
+2023-05-01 07:47:19,016 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_5
+2023-05-01 07:47:19,026 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden32_pretraining_full_yespre5_0
+2023-05-01 07:47:20,101 INFO     Validation loss: 3.827016748285241
+2023-05-01 07:47:20,101 INFO     Validation perplexity: 45.925326857840716
+2023-05-01 07:47:22,203 INFO     Validation (strided) loss: 3.815914716729639
+2023-05-01 07:47:22,203 INFO     Validation (strided) perplexity: 45.418282250454936
+2023-05-01 07:47:23,113 INFO     Test loss: 3.7605479232163384
+2023-05-01 07:47:23,113 INFO     Test perplexity: 42.971964866624646
+2023-05-01 07:51:52,319 INFO     Test (strided) loss: 3.749374415938398
+2023-05-01 07:51:52,319 INFO     Test (strided) perplexity: 42.49448980757461

@@ -1,0 +1,13 @@
+2023-05-01 19:17:40,323 INFO     Namespace(directory='CHILDES/pretraining_full_18/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=512, n_positions=256, n_head=12, n_layer=2, dropout=0.2, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden512_18', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden512_pretraining_full_yespre18_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 19:17:54,083 INFO     Vocab size: 17096
+2023-05-01 19:17:55,654 INFO     Model size: 4.2M parameters
+2023-05-01 19:18:03,653 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden512_18
+2023-05-01 19:18:03,843 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden512_pretraining_full_yespre18_0
+2023-05-01 19:18:06,422 INFO     Validation loss: 3.0924393565169708
+2023-05-01 19:18:06,422 INFO     Validation perplexity: 22.030753344211394
+2023-05-01 19:18:11,443 INFO     Validation (strided) loss: 3.0631006962130956
+2023-05-01 19:18:11,443 INFO     Validation (strided) perplexity: 21.39379006874997
+2023-05-01 19:18:13,695 INFO     Test loss: 3.0293583759879463
+2023-05-01 19:18:13,695 INFO     Test perplexity: 20.68395700739862
+2023-05-01 19:28:29,588 INFO     Test (strided) loss: 2.9986268184679012
+2023-05-01 19:28:29,589 INFO     Test (strided) perplexity: 20.05797476307808

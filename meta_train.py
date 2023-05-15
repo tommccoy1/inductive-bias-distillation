@@ -17,6 +17,7 @@ from training import *
 from dataloading import *
 from dataset_iterators import *
 from models import *
+from evaluations import *
 
 import argparse
 
@@ -39,7 +40,7 @@ parser.add_argument("--max_batches_per_language", help="Max number of training b
 parser.add_argument("--meta_train_size", help="Training sequences per episode of a meta dataset; only used when evaluating with formal languages", type=int, default=10)
 parser.add_argument("--meta_test_size", help="Evaluation sequences per episode of meta training", type=int, default=10)
 
-parser.add_argument("--dataset", help="Data to meta-train on. Options: simple, yp, regex, scfg, abn, emb, cross", type=str, default="simple")
+parser.add_argument("--dataset", help="Data to meta-train on. Options: simple, yp, scfg, formal", type=str, default="simple")
 parser.add_argument("--yandp_param_file", help="File with production weights for the Yang & Piantadosi model", type=str, default=None)
 parser.add_argument("--formal_train_size", help="Training size for using the formal languages as an evaluation set", type=int, default=100)
 parser.add_argument("--formal_test_size", help="Test size for using the formal languages as an evaluation set", type=int, default=10)
@@ -65,6 +66,7 @@ parser.add_argument("--warmup_proportion", help="Proportion of total steps that 
 parser.add_argument("--patience", help="Patience", type=int, default=None)
 parser.add_argument("--lr_decay_patience", help="Learning rate decay paatience", type=int, default=None)
 parser.add_argument("--multi_step_loss", help="use multi-step loss", action='store_true')
+parser.add_argument("--pseudo", help="do pre-training (pseudo meta-training) instead of true meta-training", action='store_true')
 
 # Saving arguments
 parser.add_argument("--model_name", help="Model name prefix", type=str, default=None)
@@ -76,18 +78,19 @@ parser.add_argument("--eval", help="Just evaluate, don't train", action='store_t
 parser.add_argument("--eval_formal", help="evaluate on formal languages", action='store_true')
 parser.add_argument("--eval_valid", help="evaluate on the validation set", action='store_true')
 parser.add_argument("--top_p", help="Probability mass to truncate the probability distribution to when sampling from an LM for precision and recall", type=float, default=1.00)
+parser.add_argument("--hot_temperature", help="Temperature to apply when sampling from an LM for precision and recall", type=float, default=1.00)
+parser.add_argument("--cold_temperature", help="Temperature to use when reranking LM outputs", type=float, default=1.00)
 parser.add_argument("--prec_rec_n_samples", help="Number of samples to generate for precision and recall", type=int, default=10000)
 parser.add_argument("--sgd_epochs", help="Number of epochs to do with SGD during adaptation", type=int, default=1)
+parser.add_argument("--adam_lr", help="Learning rate to use with Adam", type=float, default=5e-4)
 parser.add_argument("--adam_epochs", help="Epochs with Adam, after SGD", type=int, default=10)
 parser.add_argument("--eval_suffix", help="Suffix to add in filename for eval output", type=str, default="")
-parser.add_argument("--random_normalized", help="Compare to normalized probabilities", action='store_true')
-parser.add_argument("--return_last", help="No early stopping: Just use last values", action='store_true')
+parser.add_argument("--return_last", help="No early stopping: Just use last parameter values", action='store_true')
 args = parser.parse_args()
 
 
 if args.meta_eval_batch_size is None:
     args.meta_eval_batch_size = args.meta_train_batch_size
-
 
 
 ################################################################################################
@@ -164,6 +167,7 @@ elif args.architecture == "LSTM":
     model.rnn.flatten_parameters()
 
 
+
 model_size = sum(t.numel() for t in model.parameters())
 logging.info(f"Model size: {model_size/1000**2:.1f}M parameters")
 
@@ -174,29 +178,49 @@ logging.info(f"Model size: {model_size/1000**2:.1f}M parameters")
 ################################################################################################
 
 warmup_steps = math.ceil(args.warmup_proportion*args.n_epochs*len(meta_dataset.train))
-trainer = MetaTrainer(
-        model=model,
-        train_datasplit=meta_dataset.train,
-        eval_datasplit=meta_dataset.valid,
-        n_epochs=args.n_epochs,
-        patience=args.patience,
-        lr_decay_patience=args.lr_decay_patience,
-        weight_decay=args.weight_decay,   
-        learning_rate=args.learning_rate,
-        lr_scheduler_type=args.lr_scheduler_type,
-        warmup_steps=warmup_steps,
-        eval_every=args.eval_every,
-        log_every=args.eval_every,
-        tokenizer=meta_dataset.tokenizer,
-        inner_lr=args.inner_lr,
-        multi_step_loss=args.multi_step_loss,
-        )
+if args.pseudo:
+    trainer = PseudoMetaTrainer(
+            model=model,
+            train_datasplit=meta_dataset.train,
+            eval_datasplit=meta_dataset.valid,
+            n_epochs=args.n_epochs,
+            patience=args.patience,
+            lr_decay_patience=args.lr_decay_patience,
+            weight_decay=args.weight_decay,   
+            learning_rate=args.learning_rate,
+            lr_scheduler_type=args.lr_scheduler_type,
+            warmup_steps=warmup_steps,
+            eval_every=args.eval_every,
+            log_every=args.eval_every,
+            tokenizer=meta_dataset.tokenizer,
+            inner_lr=args.inner_lr,
+            multi_step_loss=args.multi_step_loss,
+            )
+else:
+    trainer = MetaTrainer(
+            model=model,
+            train_datasplit=meta_dataset.train,
+            eval_datasplit=meta_dataset.valid,
+            n_epochs=args.n_epochs,
+            patience=args.patience,
+            lr_decay_patience=args.lr_decay_patience,
+            weight_decay=args.weight_decay,   
+            learning_rate=args.learning_rate,
+            lr_scheduler_type=args.lr_scheduler_type,
+            warmup_steps=warmup_steps,
+            eval_every=args.eval_every,
+            log_every=args.eval_every,
+            tokenizer=meta_dataset.tokenizer,
+            inner_lr=args.inner_lr,
+            multi_step_loss=args.multi_step_loss,
+            )
 
 if not args.eval: 
     trainer.train()
 
 if not args.model_name.startswith("random"):
     trainer.model.load()
+
 
 
 ################################################################################################
@@ -208,7 +232,7 @@ if (not args.eval) or args.eval_valid:
 
 if args.eval_formal:
 
-    eval_formal(trainer.model, args.language_list, formal_train_size=args.formal_train_size, formal_test_size=args.formal_test_size, meta_train_batch_size=args.meta_train_batch_size, n_positions=args.n_positions, top_p=args.top_p, prec_rec_n_samples=args.prec_rec_n_samples, inner_lr=args.inner_lr, sgd_epochs=args.sgd_epochs, adam_epochs=args.adam_epochs, return_last=args.return_last, random_normalized=args.random_normalized)
+    eval_formal(trainer.model, args.language_list, formal_train_size=args.formal_train_size, formal_test_size=args.formal_test_size, meta_train_batch_size=args.meta_train_batch_size, n_positions=args.n_positions, top_p=args.top_p, hot_temperature=args.hot_temperature, cold_temperature=args.cold_temperature, prec_rec_n_samples=args.prec_rec_n_samples, inner_lr=args.inner_lr, adam_lr=args.adam_lr, sgd_epochs=args.sgd_epochs, adam_epochs=args.adam_epochs, return_last=args.return_last, integer_vocab_size=integer_vocab_size, tokenizer=meta_dataset.tokenizer)
 
 
 

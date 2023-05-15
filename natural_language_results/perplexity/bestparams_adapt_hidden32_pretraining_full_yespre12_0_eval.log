@@ -1,0 +1,13 @@
+2023-05-01 08:22:08,341 INFO     Namespace(directory='CHILDES/pretraining_full_12/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=32, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_12', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden32_pretraining_full_yespre12_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 08:22:22,050 INFO     Vocab size: 17096
+2023-05-01 08:22:23,610 INFO     Model size: 0.0M parameters
+2023-05-01 08:22:31,736 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_12
+2023-05-01 08:22:31,747 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden32_pretraining_full_yespre12_0
+2023-05-01 08:22:32,818 INFO     Validation loss: 3.837213317417824
+2023-05-01 08:22:32,818 INFO     Validation perplexity: 46.39600319196112
+2023-05-01 08:22:34,944 INFO     Validation (strided) loss: 3.8280644036289138
+2023-05-01 08:22:34,944 INFO     Validation (strided) perplexity: 45.97346598413666
+2023-05-01 08:22:35,850 INFO     Test loss: 3.7740589542013367
+2023-05-01 08:22:35,850 INFO     Test perplexity: 43.5565003618984
+2023-05-01 08:27:06,397 INFO     Test (strided) loss: 3.7654005913803408
+2023-05-01 08:27:06,397 INFO     Test (strided) perplexity: 43.18100033214803

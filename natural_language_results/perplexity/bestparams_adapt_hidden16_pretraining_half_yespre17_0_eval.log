@@ -1,0 +1,13 @@
+2023-05-01 06:33:08,514 INFO     Namespace(directory='CHILDES/pretraining_half_17/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_17', pretrained_vocab_size=15, n_epochs=256, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_half_yespre17_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 06:33:22,046 INFO     Vocab size: 15686
+2023-05-01 06:33:23,529 INFO     Model size: 0.0M parameters
+2023-05-01 06:33:28,122 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_17
+2023-05-01 06:33:28,164 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_half_yespre17_0
+2023-05-01 06:33:29,417 INFO     Validation loss: 4.151673616990185
+2023-05-01 06:33:29,417 INFO     Validation perplexity: 63.540253407481
+2023-05-01 06:33:31,956 INFO     Validation (strided) loss: 4.14791291815483
+2023-05-01 06:33:31,956 INFO     Validation (strided) perplexity: 63.30174640808821
+2023-05-01 06:33:33,003 INFO     Test loss: 4.083099514871781
+2023-05-01 06:33:33,004 INFO     Test perplexity: 59.329076512078146
+2023-05-01 06:38:48,719 INFO     Test (strided) loss: 4.079453852394128
+2023-05-01 06:38:48,720 INFO     Test (strided) perplexity: 59.113176512392734

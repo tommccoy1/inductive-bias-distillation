@@ -1,0 +1,13 @@
+2023-04-30 23:59:28,565 INFO     Namespace(directory='CHILDES/pretraining_thirtysecond_17/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden1024_17', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden1024_pretraining_thirtysecond_yespre17_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-04-30 23:59:37,300 INFO     Vocab size: 5886
+2023-04-30 23:59:38,930 INFO     Model size: 16.8M parameters
+2023-04-30 23:59:39,210 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden1024_17
+2023-04-30 23:59:39,424 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden1024_pretraining_thirtysecond_yespre17_0
+2023-04-30 23:59:42,544 INFO     Validation loss: 3.907415546686011
+2023-04-30 23:59:42,544 INFO     Validation perplexity: 49.77015696564735
+2023-04-30 23:59:48,557 INFO     Validation (strided) loss: 3.8990821407038734
+2023-04-30 23:59:48,557 INFO     Validation (strided) perplexity: 49.35712541193596
+2023-04-30 23:59:51,260 INFO     Test loss: 3.8474975902855086
+2023-04-30 23:59:51,260 INFO     Test perplexity: 46.87561434753833
+2023-05-01 00:12:09,755 INFO     Test (strided) loss: 3.838045946165069
+2023-05-01 00:12:09,756 INFO     Test (strided) perplexity: 46.434649924933744

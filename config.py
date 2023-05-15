@@ -1,8 +1,11 @@
 
-TRANSFORMERS_PATH = '/scratch/gpfs/tm4633/transformers'
+# Directory for saving info for the Hugging Face transformers library
+TRANSFORMERS_PATH = "transformers/"
 
-LOG_DIR = "/scratch/gpfs/tm4633/logs/"
+# Directory for saving log files
+LOG_DIR = "logs/"
 
-WEIGHT_DIR = "/scratch/gpfs/tm4633/weights/"
+# Directory for saving model weights
+WEIGHT_DIR = "weights/"
 
 

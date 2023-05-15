@@ -1,0 +1,13 @@
+2023-04-30 21:35:27,785 INFO     Namespace(directory='CHILDES/pretraining_thirtysecond_18/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=32, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_18', pretrained_vocab_size=15, n_epochs=4096, eval_every=100, weight_decay=0.01, learning_rate=0.001, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden32_pretraining_thirtysecond_yespre18_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-04-30 21:35:38,210 INFO     Vocab size: 5993
+2023-04-30 21:35:39,657 INFO     Model size: 0.0M parameters
+2023-04-30 21:35:39,969 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden32_18
+2023-04-30 21:35:39,988 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden32_pretraining_thirtysecond_yespre18_0
+2023-04-30 21:35:41,099 INFO     Validation loss: 4.085932322007863
+2023-04-30 21:35:41,099 INFO     Validation perplexity: 59.49738262021898
+2023-04-30 21:35:43,396 INFO     Validation (strided) loss: 4.081085270742388
+2023-04-30 21:35:43,397 INFO     Validation (strided) perplexity: 59.20969354159833
+2023-04-30 21:35:44,346 INFO     Test loss: 4.02581429960868
+2023-04-30 21:35:44,346 INFO     Test perplexity: 56.02591209003698
+2023-04-30 21:40:23,201 INFO     Test (strided) loss: 4.021661403264465
+2023-04-30 21:40:23,201 INFO     Test (strided) perplexity: 55.79372474323127

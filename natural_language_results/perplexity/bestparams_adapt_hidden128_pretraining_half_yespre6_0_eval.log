@@ -1,0 +1,13 @@
+2023-05-01 06:36:46,843 INFO     Namespace(directory='CHILDES/pretraining_half_6/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=128, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden128_6', pretrained_vocab_size=15, n_epochs=256, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden128_pretraining_half_yespre6_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 06:36:58,811 INFO     Vocab size: 15716
+2023-05-01 06:37:00,370 INFO     Model size: 0.3M parameters
+2023-05-01 06:37:04,413 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden128_6
+2023-05-01 06:37:04,462 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden128_pretraining_half_yespre6_0
+2023-05-01 06:37:05,822 INFO     Validation loss: 3.3684181417549213
+2023-05-01 06:37:05,822 INFO     Validation perplexity: 29.03256531208324
+2023-05-01 06:37:08,558 INFO     Validation (strided) loss: 3.3453520774450762
+2023-05-01 06:37:08,558 INFO     Validation (strided) perplexity: 28.37056254364907
+2023-05-01 06:37:09,725 INFO     Test loss: 3.3091848331546947
+2023-05-01 06:37:09,725 INFO     Test perplexity: 27.362811121758853
+2023-05-01 06:43:02,313 INFO     Test (strided) loss: 3.285356829435858
+2023-05-01 06:43:02,316 INFO     Test (strided) perplexity: 26.718516567285178

@@ -75,7 +75,10 @@ class Model(nn.Module):
         if isinstance(self.model, GPT2LMHeadModel):
             self.model = GPT2LMHeadModel.from_pretrained(model_name).to(device)
         else:
-            self.load_state_dict(torch.load(model_name + ".weights"))
+            if torch.cuda.is_available():
+                self.load_state_dict(torch.load(model_name + ".weights"))
+            else:
+                self.load_state_dict(torch.load(model_name + ".weights", map_location=torch.device('cpu')))
 
 
 
@@ -161,7 +164,7 @@ class RNNLM(LanguageModel):
         else:
             return weight.new_zeros(self.n_layers, bsz, self.hidden_size)
 
-    def forward(self, batch, per_token_loss=False):
+    def forward(self, batch, per_token_loss=False, temperature=1.0):
 
         emb = self.drop(self.emb_layer(batch["input_ids"].transpose(0,1)))
         hidden = self.init_hidden(len(batch["input_ids"]))
@@ -176,7 +179,7 @@ class RNNLM(LanguageModel):
         loss = None
         if "labels" in batch:
             # Compute loss
-            shift_logits = logits[..., :-1, :].contiguous()
+            shift_logits = logits[..., :-1, :].contiguous() / temperature
             shift_labels = batch["labels"][..., 1:].contiguous()
 
             if per_token_loss:
@@ -188,15 +191,16 @@ class RNNLM(LanguageModel):
         return {"logits" : logits, "loss" : loss}
 
 
-    def generate(self, input_ids, do_sample=True, max_length=500, top_p=1.0, top_k=0, early_stopping=True, pad_token_id=None, eos_token_id=3):
+    def generate(self, input_ids, do_sample=True, max_length=500, top_p=1.0, top_k=0, temperature=1.0, early_stopping=True, pad_token_id=None, eos_token_id=3):
         batch_size = len(input_ids)
         done = torch.zeros(batch_size).type(torch.uint8).to(device)
         sentence = input_ids
-        for _ in range(60):
+        for _ in range(max_length):
             logits = self.forward({"input_ids" : sentence})["logits"]
             logits = logits[:, -1, :]
             sorted_logits, sorted_indices = torch.sort(logits, descending=True)
-          
+         
+            # Sampling based on code from here: https://gist.github.com/thomwolf/1a5a29f6962089e871b94cbd09daf317
             cumulative_probs = torch.cumsum(nn.Softmax(dim=-1)(sorted_logits), dim=-1)
             sorted_indices_to_remove = cumulative_probs > top_p
             sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
@@ -204,7 +208,7 @@ class RNNLM(LanguageModel):
             indices_to_remove = sorted_indices_to_remove.scatter(1, sorted_indices, sorted_indices_to_remove)
             logits = logits.masked_fill(indices_to_remove, -1000000)
          
-            probabilities = F.softmax(logits, dim=-1)
+            probabilities = F.softmax(logits/temperature, dim=-1)
             pred = torch.multinomial(probabilities, 1, replacement=True)
             pred[done != 0] = pad_token_id
 

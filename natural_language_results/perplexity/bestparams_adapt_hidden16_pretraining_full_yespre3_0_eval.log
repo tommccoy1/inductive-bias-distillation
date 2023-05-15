@@ -1,0 +1,13 @@
+2023-05-01 17:43:05,532 INFO     Namespace(directory='CHILDES/pretraining_full_3/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_3', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_full_yespre3_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 17:43:22,217 INFO     Vocab size: 17096
+2023-05-01 17:43:23,781 INFO     Model size: 0.0M parameters
+2023-05-01 17:43:33,078 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_3
+2023-05-01 17:43:33,106 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_full_yespre3_0
+2023-05-01 17:43:34,390 INFO     Validation loss: 4.12872877221923
+2023-05-01 17:43:34,390 INFO     Validation perplexity: 62.098930850879015
+2023-05-01 17:43:36,952 INFO     Validation (strided) loss: 4.123598279997834
+2023-05-01 17:43:36,953 INFO     Validation (strided) perplexity: 61.78114865578524
+2023-05-01 17:43:38,030 INFO     Test loss: 4.06200730716244
+2023-05-01 17:43:38,031 INFO     Test perplexity: 58.0908002044396
+2023-05-01 17:49:00,094 INFO     Test (strided) loss: 4.057907558125544
+2023-05-01 17:49:00,094 INFO     Test (strided) perplexity: 57.85313002918046

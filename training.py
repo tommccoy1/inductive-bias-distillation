@@ -5,6 +5,7 @@ import math
 import os
 from collections import Counter
 import copy
+import random
 
 import torch
 import higher
@@ -126,15 +127,22 @@ class Trainer:
         eval_datasplit.reset()
 
         total_eval_loss = 0
+        total_tokens = 0
         for batch_index, batch in enumerate(eval_datasplit):
             loss = self.prediction_step(self.model, batch).item()
-            total_eval_loss += loss
-           
-        avg_eval_loss = total_eval_loss / batch_index
+
+            # Ignore padding tokens, which have a label of -100
+            tokens_in_batch = torch.sum(batch["labels"].view(-1) >= 0).item()
+
+            # Multiply by tokens in batch to control for varying length batches
+            total_eval_loss += loss*tokens_in_batch
+            total_tokens += tokens_in_batch
+
+        # Divide by total tokens to get average
+        avg_eval_loss = total_eval_loss / total_tokens
         logging.info(name + " loss: " + str(avg_eval_loss))
 
         if avg_eval_loss < 25:
-            # Perplexity is specific to language modeling
             logging.info(name + " perplexity: " + str(math.exp(avg_eval_loss)))
 
         # Enable learning rate decrease
@@ -185,7 +193,6 @@ class Trainer:
                 break
 
             for batch_index, batch in enumerate(self.train_datasplit):
-
                 if total_updates % self.eval_every == 0:
                     self.evaluate(save=True)
 
@@ -247,7 +254,10 @@ class MetaTrainer(Trainer):
                     diffopt.step(inner_loss)
 
                     if self.multi_step_loss:
-                        this_loss = fmodel(test)["loss"]
+                        this_loss = 0
+                        for test_batch in inputs["test_batches"]:
+                            this_loss += fmodel(test_batch)["loss"]
+                        
                         this_loss.backward(retain_graph=True)
                         outer_loss += this_loss.detach()
             
@@ -286,9 +296,60 @@ class MetaTrainer(Trainer):
             return outer_loss
 
 
+# Uses the same data as a MetaTrainer, but only uses standard (pre-)training, not MAML
+class PseudoMetaTrainer(MetaTrainer):
+
+    def __init__(self, **kwargs):
+        super(PseudoMetaTrainer, self).__init__(**kwargs)
+
+
+    def training_step(self, model, inputs):
+
+        model.train()
+        test = {"input_ids" : inputs["test_input_ids"], "labels" : inputs["test_labels"]}
+
+        
+        outer_loss = 0
+
+        # Train on the training set for this episode
+        for mini_batch in inputs["train_batches"]:
+
+            inner_loss = model(mini_batch)["loss"]
+            inner_loss.backward()
+
+            if self.multi_step_loss:
+                this_loss = 0
+                for test_batch in inputs["test_batches"]:
+                    this_loss += model(test_batch)["loss"]
+                        
+                this_loss.backward(retain_graph=True)
+                outer_loss += this_loss.detach()
+            
+        if not self.multi_step_loss:
+            # Evaluate on the test set for this episode
+            outer_loss = model(test)["loss"]
+            outer_loss.backward()
+            return outer_loss.detach()
+            
+        else:
+            return outer_loss
+
+
+    def prediction_step(self, model, inputs):
+        
+        model.eval()
+        test = {"input_ids" : inputs["test_input_ids"], "labels" : inputs["test_labels"]}
+
+        # Evaluate on the test set for this episode
+        outer_loss = model(test)["loss"].detach()
+
+        return outer_loss
+
+
+
 
 # Train simply on a single task within a meta dataset
-def simple_train_model(model, dataset, sgd_lr=None, sgd_epochs=1, adam_epochs=100, return_last=False):
+def simple_train_model(model, dataset, sgd_lr=None, adam_lr=5e-4, sgd_epochs=1, adam_epochs=100, return_last=False, full_dataset=None):
 
     if hasattr(model, "rnn"):
         model.rnn.flatten_parameters()
@@ -302,30 +363,32 @@ def simple_train_model(model, dataset, sgd_lr=None, sgd_epochs=1, adam_epochs=10
     for epoch_index in range(n_epochs):
 
         if epoch_index == sgd_epochs:
-            opt = torch.optim.AdamW(model.parameters(), lr=5e-4)
+            opt = torch.optim.AdamW(model.parameters(), lr=adam_lr)
         elif epoch_index == 0:
             opt = torch.optim.SGD(model.parameters(), lr=sgd_lr)
 
         model.zero_grad()
 
-        model.eval()
-        valid_loss = model(test_set)["loss"]
-        logging.info("LOSS, PERPLEXITY: " + str(valid_loss.item()) + " " + str(torch.exp(valid_loss).item())) # perplexity is specific to language modeling
-        model.train()
-
         if not return_last:
+            model.eval()
+            valid_loss = model(test_set)["loss"]
+            logging.info("LOSS, PERPLEXITY: " + str(valid_loss.item()) + " " + str(torch.exp(valid_loss).item()))
+            model.train()
+
             if valid_loss >= best_loss:
                 break
             else:
                 best_loss = valid_loss
                 best_model = copy.deepcopy(model)
 
+        model.train()
         for mini_batch in dataset["train_batches"]:
             opt.zero_grad()
             train_loss = model(mini_batch)["loss"]
             train_loss.backward()
             opt.step()
             opt.zero_grad()
+
 
     if return_last:
         model_to_return = model
@@ -334,6 +397,14 @@ def simple_train_model(model, dataset, sgd_lr=None, sgd_epochs=1, adam_epochs=10
 
     if hasattr(model_to_return, "rnn"):
         model_to_return.rnn.flatten_parameters()
+
+    logging.info("DONE TRAINING")
+
+    if return_last:
+        train_loss = 0
+        for mini_batch in dataset["train_batches"]:
+            train_loss += model_to_return(mini_batch)["loss"].item()
+        logging.info("TRAINING SET LOSS: " + str(train_loss))
 
     return model_to_return
 

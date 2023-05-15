@@ -49,6 +49,8 @@ class Dataset:
         self.test = None
 
     def prepare_input(self, batch):
+        
+        # Keys in the batch that can be converted into tensors
         tensorizable_keys = ["input_ids", "labels", "attention_mask", "test_input_ids", "test_labels", "test_attention_mask"]
 
         prepared_batch = {}
@@ -140,7 +142,7 @@ class DataSplit:
 # - shuffle: Whether to shuffle the batches that are in memory, as opposed to processing them in order
 # - stride: Number of tokens at the start of every sequence that do not have a loss computed (for training
 #   of evaluation); instead they serve only as context for later tokens, ensuring that every token has at
-#   least stride tokens of context
+#   least 'stride' tokens of context
 # - valid_stride, test_stride: Stride to use in special extra-stride versions of the validation and test sets
 class LMDatasetFromFiles(Dataset):
 
@@ -336,6 +338,7 @@ class LMDataSplitFromFile(DataSplit):
             self.at_end_of_file = False
 
             self.current_tokens = []
+            self.stride_on_current_tokens = 0
 
             if offset is not None:
                 # Add pad tokens at the start to implement the offset
@@ -432,6 +435,7 @@ class LMDataSplitFromFile(DataSplit):
                 break
 
             tokens = self.tokenizer.encode(lines)
+            
             self.current_tokens = self.current_tokens + tokens
 
             if self.at_end_of_file:
@@ -614,4 +618,11 @@ if __name__ == "__main__":
     for elt in meta_dataset.train:
         print(elt)
 
+
+    lm_dataset = LMDatasetFromFiles(directory="CHILDES/pretraining_half_2/", add_eos=False, batch_size=3, context_size=7, batches_per_buffer=10, loop=False, stream=True, shuffle=False, stride=0, valid_stride=None, test_stride=None)
+    for word in ["the", "of", "I", "elephant", "dog", "house", "purple", "basketball", "sitting"]:
+        print(word, lm_dataset.tokenizer.encode(word))
+    for elt in lm_dataset.train:
+        print(elt)
+        break
 

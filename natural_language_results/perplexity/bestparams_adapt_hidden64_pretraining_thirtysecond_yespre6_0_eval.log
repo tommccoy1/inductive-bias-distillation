@@ -1,0 +1,13 @@
+2023-04-30 22:21:03,062 INFO     Namespace(directory='CHILDES/pretraining_thirtysecond_6/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=64, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden64_6', pretrained_vocab_size=15, n_epochs=4096, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden64_pretraining_thirtysecond_yespre6_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-04-30 22:21:13,634 INFO     Vocab size: 5604
+2023-04-30 22:21:15,094 INFO     Model size: 0.1M parameters
+2023-04-30 22:21:15,400 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden64_6
+2023-04-30 22:21:15,408 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden64_pretraining_thirtysecond_yespre6_0
+2023-04-30 22:21:16,557 INFO     Validation loss: 3.996517749874148
+2023-04-30 22:21:16,557 INFO     Validation perplexity: 54.408356264794506
+2023-04-30 22:21:18,933 INFO     Validation (strided) loss: 3.9878245422041023
+2023-04-30 22:21:18,934 INFO     Validation (strided) perplexity: 53.937423050684465
+2023-04-30 22:21:19,916 INFO     Test loss: 3.9516232121629664
+2023-04-30 22:21:19,916 INFO     Test perplexity: 52.019737411113574
+2023-04-30 22:26:05,171 INFO     Test (strided) loss: 3.943704581243744
+2023-04-30 22:26:05,171 INFO     Test (strided) perplexity: 51.609438955028764

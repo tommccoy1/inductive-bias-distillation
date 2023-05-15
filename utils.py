@@ -3,7 +3,6 @@ import math
 import torch
 import logging
 
-
 if torch.cuda.is_available():
     device = torch.device('cuda')
 else:
@@ -12,11 +11,11 @@ else:
 
 # Sample batch_size sequences from the LM
 # top_p: truncate the distribution to the top p of the probability mass (1.0 means no truncation)
-def sample_from_lm(lm, tokenizer, batch_size=1, top_p=1.00):
+def sample_from_lm(lm, tokenizer, batch_size=1, top_p=1.00, temperature=1.0):
     lm.eval()
     input_ids = tokenizer(["<bos>"]*batch_size, add_special_tokens=False, return_tensors="pt").to(device)["input_ids"]
 
-    text = lm.generate(input_ids, do_sample=True, max_length=105, top_p=top_p, top_k=0, early_stopping=True, pad_token_id=tokenizer.pad_token_id, eos_token_id=3)
+    text = lm.generate(input_ids, do_sample=True, max_length=105, top_p=top_p, temperature=temperature, top_k=0, early_stopping=True, pad_token_id=tokenizer.pad_token_id, eos_token_id=3)
 
     text = tokenizer.batch_decode(text, skip_special_tokens=True)
 
@@ -28,7 +27,7 @@ def compute_precision_recall(model_most_common, model_all, true_most_common, tru
     precision_numerator = 0
     precision_denominator = 0
 
-    # List of common model-generated sequences that are no in the true set
+    # List of common model-generated sequences that are not in the true set
     model_imprecise = []
 
     for model_token in model_most_common:
@@ -53,7 +52,6 @@ def compute_precision_recall(model_most_common, model_all, true_most_common, tru
             model_irrecall.append(true_token)
 
         recall_denominator += 1
-
 
     precision = precision_numerator * 1.0 / precision_denominator
     recall = recall_numerator * 1.0 / recall_denominator
@@ -119,7 +117,6 @@ def meta_mini_batches_from_batch(batch, train_batch_size, test_batch_size, pad_t
     for test_mini_batch_index in range(n_test_mini_batches):
         test_start_index = test_mini_batch_index*test_batch_size
         test_end_index = (test_mini_batch_index+1)*test_batch_size
-
 
         test_mini_batch = {"input_ids" : batch["test_input_ids"][test_start_index:test_end_index], "labels" : batch["test_labels"][test_start_index:test_end_index]}
         test_mini_batch = trim_pad_columns(test_mini_batch, pad_token_id)

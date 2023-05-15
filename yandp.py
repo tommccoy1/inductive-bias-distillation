@@ -5,6 +5,7 @@ import time
 import numpy as np
 import random
 
+import logging
 import sys
 sys.setrecursionlimit(100)
 
@@ -586,8 +587,93 @@ def primitives_from_file(filename):
 
 
 
+def max_length(data_list):
+   lengths = [len(x.split()) for x in data_list]
+   max_len = max(lengths)
+
+   return max_len
+
+def unique_counts(data_list):
+    return len(list(set(data_list)))
+
 
 if __name__ == "__main__":
+    logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, handlers=[logging.StreamHandler(),logging.FileHandler("yandp_stats/yandp_stats.log")])
+    n_languages = 10000
+    n_samples = 1000
+
+    _, basic_primitives = primitives_from_file("yandp_weights/yandp_params_uniform.txt")
+    total_langs = 0
+    total_epsilon = 0
+    total_one_unique = 0
+    total_max_length_one = 0
+    total_long_diverse = 0
+
+    for index in range(n_languages):
+        if index % 100 == 0 and index > 0:
+            logging.info(str(index) + " out of " + str(n_languages))
+ 
+            logging.info("ONLY EPSILON: " + str(total_epsilon*1.0/total_langs) + " " + str(total_epsilon) + " " + str(total_langs))
+            logging.info("MAX LENGTH 1: " + str(total_max_length_one*1.0/total_langs) + " " + str(total_max_length_one) + " " + str(total_langs))
+            logging.info("ONLY ONE UNIQUE: " + str(total_one_unique*1.0/total_langs) + " " + str(total_one_unique) + " " +  str(total_langs))
+            logging.info("LONG AND DIVERSE: " + str(total_long_diverse*1.0/total_langs) + " " + str(total_long_diverse) + " " + str(total_langs))
+
+
+        dataset_created = False
+        while not dataset_created:
+            try:
+                sys.setrecursionlimit(40)
+                hyp = Hypothesis(geometric_p=0.5, terminal_w=1.0, sigma_w=1.0,
+                        prob_w_num=1.0, factor_w=1.0, x_w=1.0,
+                        prob_divisions=100, basic_primitives=basic_primitives)
+                sys.setrecursionlimit(1000)
+
+                data_list = []
+                for attempt_number in range(100*n_samples):
+                    if len(data_list) == n_samples:
+                        break
+
+                    try:
+                        sys.setrecursionlimit(40)
+                        example = hyp.to_call([])
+                        sys.setrecursionlimit(1000)
+                        data_list.append(example)
+                    except:
+                        pass
+
+                if len(data_list) == n_samples:
+                    dataset_created = True
+
+            except:
+                # Failed to generate a grammar. Loop back to the start of the
+                # while loop and try again
+                continue
+
+        total_langs += 1
+        max_len = max_length(data_list)
+        if max_len == 0:
+            total_epsilon += 1
+        if max_len == 1:
+            total_max_length_one += 1
+
+        unique = unique_counts(data_list)
+        if unique == 1:
+            total_one_unique += 1
+
+        if unique > 1 and max_len > 1:
+            total_long_diverse += 1
+
+    logging.info("ONLY EPSILON: " + str(total_epsilon*1.0/total_langs) + " " + str(total_epsilon) + " " + str(total_langs))
+    logging.info("MAX LENGTH 1: " + str(total_max_length_one*1.0/total_langs) + " " + str(total_max_length_one) + " " + str(total_langs))
+    logging.info("ONLY ONE UNIQUE: " + str(total_one_unique*1.0/total_langs) + " " + str(total_one_unique) + " " +  str(total_langs))
+    logging.info("LONG AND DIVERSE: " + str(total_long_diverse*1.0/total_langs) + " " + str(total_long_diverse) + " " + str(total_langs))
+
+
+
+
+
+# Running this will display some samples from the prior
+if False:
     _, basic_primitives = primitives_from_file("yandp_weights/yandp_params_uniform.txt")
     for _ in range(5):
         dataset_created = False
@@ -623,3 +709,5 @@ if __name__ == "__main__":
         hyp.pretty_print()
         for example in data_list:
             print(example)
+
+

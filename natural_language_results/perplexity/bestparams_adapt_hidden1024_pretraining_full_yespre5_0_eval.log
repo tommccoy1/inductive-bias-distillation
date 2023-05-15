@@ -1,0 +1,13 @@
+2023-05-01 12:41:40,644 INFO     Namespace(directory='CHILDES/pretraining_full_5/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden1024_5', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden1024_pretraining_full_yespre5_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 12:41:57,209 INFO     Vocab size: 17096
+2023-05-01 12:41:58,783 INFO     Model size: 16.8M parameters
+2023-05-01 12:42:08,062 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden1024_5
+2023-05-01 12:42:08,362 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden1024_pretraining_full_yespre5_0
+2023-05-01 12:42:12,705 INFO     Validation loss: 3.0700622652223086
+2023-05-01 12:42:12,705 INFO     Validation perplexity: 21.543244028120817
+2023-05-01 12:42:21,121 INFO     Validation (strided) loss: 3.039404049428241
+2023-05-01 12:42:21,121 INFO     Validation (strided) perplexity: 20.892788455019307
+2023-05-01 12:42:24,902 INFO     Test loss: 3.0109354294812145
+2023-05-01 12:42:24,903 INFO     Test perplexity: 20.306386236021147
+2023-05-01 12:59:50,751 INFO     Test (strided) loss: 2.978659268769845
+2023-05-01 12:59:50,752 INFO     Test (strided) perplexity: 19.661438261245888

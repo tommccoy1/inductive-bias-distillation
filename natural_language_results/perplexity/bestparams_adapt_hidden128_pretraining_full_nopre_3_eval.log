@@ -1,0 +1,12 @@
+2023-05-01 14:07:28,040 INFO     Namespace(directory='CHILDES/pretraining_full_3/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=128, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name=None, pretrained_vocab_size=None, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden128_pretraining_full_nopre_3', model_index=3, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 14:07:44,912 INFO     Vocab size: 17096
+2023-05-01 14:07:46,529 INFO     Model size: 2.5M parameters
+2023-05-01 14:07:55,756 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden128_pretraining_full_nopre_3
+2023-05-01 14:07:57,341 INFO     Validation loss: 3.313640959165556
+2023-05-01 14:07:57,341 INFO     Validation perplexity: 27.485015332592116
+2023-05-01 14:08:00,426 INFO     Validation (strided) loss: 3.289639364458516
+2023-05-01 14:08:00,426 INFO     Validation (strided) perplexity: 26.833184910583718
+2023-05-01 14:08:01,733 INFO     Test loss: 3.2486711674900657
+2023-05-01 14:08:01,733 INFO     Test perplexity: 25.756091635223708
+2023-05-01 14:14:41,483 INFO     Test (strided) loss: 3.222940880215649
+2023-05-01 14:14:41,483 INFO     Test (strided) perplexity: 25.101833222298602

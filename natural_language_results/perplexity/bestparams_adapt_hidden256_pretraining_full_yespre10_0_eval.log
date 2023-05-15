@@ -1,0 +1,13 @@
+2023-05-01 14:14:27,833 INFO     Namespace(directory='CHILDES/pretraining_full_10/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=256, n_positions=256, n_head=12, n_layer=2, dropout=0.2, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden256_10', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden256_pretraining_full_yespre10_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 14:14:41,522 INFO     Vocab size: 17096
+2023-05-01 14:14:43,085 INFO     Model size: 1.1M parameters
+2023-05-01 14:14:51,159 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden256_10
+2023-05-01 14:14:51,241 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden256_pretraining_full_yespre10_0
+2023-05-01 14:14:53,347 INFO     Validation loss: 3.166039262661348
+2023-05-01 14:14:53,348 INFO     Validation perplexity: 23.713375657145374
+2023-05-01 14:14:57,517 INFO     Validation (strided) loss: 3.137377604729473
+2023-05-01 14:14:57,517 INFO     Validation (strided) perplexity: 23.04335876029252
+2023-05-01 14:14:59,370 INFO     Test loss: 3.104622929393057
+2023-05-01 14:14:59,370 INFO     Test perplexity: 22.300808410324468
+2023-05-01 14:23:25,223 INFO     Test (strided) loss: 3.0739356799324136
+2023-05-01 14:23:25,224 INFO     Test (strided) perplexity: 21.62685176562997

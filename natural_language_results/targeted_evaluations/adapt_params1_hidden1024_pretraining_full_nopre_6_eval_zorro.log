@@ -1,0 +1,32 @@
+2023-05-13 13:48:31,620 INFO     Namespace(directory='CHILDES/pretraining_full_6/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name=None, pretrained_vocab_size=None, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='adapt_params1_hidden1024_pretraining_full_nopre_6', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_recursion_big=False, eval_recursion_big2=False, eval_recursion_big3=False, eval_recursion_big4=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro')
+2023-05-13 13:48:46,027 INFO     Vocab size: 17096
+2023-05-13 13:48:48,137 INFO     Model size: 34.3M parameters
+2023-05-13 13:48:56,811 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/adapt_params1_hidden1024_pretraining_full_nopre_6
+2023-05-13 13:48:59,968 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1670 2000 0.835
+2023-05-13 13:49:02,922 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1718 2000 0.859
+2023-05-13 13:49:05,976 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1288 2000 0.644
+2023-05-13 13:49:09,031 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1257 2000 0.6285
+2023-05-13 13:49:12,140 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1469 2000 0.7345
+2023-05-13 13:49:15,121 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1597 2000 0.7985
+2023-05-13 13:49:18,208 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1749 2000 0.8745
+2023-05-13 13:49:21,141 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1771 2000 0.8855
+2023-05-13 13:49:24,294 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 1987 2000 0.9935
+2023-05-13 13:49:26,837 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1291 2000 0.6455
+2023-05-13 13:49:30,077 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1536 2000 0.768
+2023-05-13 13:49:33,207 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 1990 2000 0.995
+2023-05-13 13:49:36,653 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 998 2000 0.499
+2023-05-13 13:49:39,927 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1945 2000 0.9725
+2023-05-13 13:49:43,192 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1992 2000 0.996
+2023-05-13 13:49:46,359 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1637 2000 0.8185
+2023-05-13 13:49:49,618 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1460 2000 0.73
+2023-05-13 13:49:52,728 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1347 2000 0.6735
+2023-05-13 13:49:55,760 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1916 2000 0.958
+2023-05-13 13:49:58,837 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1263 2000 0.6315
+2023-05-13 13:50:01,978 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1351 2000 0.6755
+2023-05-13 13:50:05,080 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1913 2000 0.9565
+2023-05-13 13:50:08,424 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 600 2000 0.3
+2023-05-13 13:50:08,424 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 35745 46000 0.7770652173913043
+2023-05-13 13:50:12,316 INFO     Validation loss: 3.102245140673646
+2023-05-13 13:50:12,316 INFO     Validation perplexity: 22.247844792753003
+2023-05-13 13:50:20,255 INFO     Validation (strided) loss: 3.0737228631541695
+2023-05-13 13:50:20,256 INFO     Validation (strided) perplexity: 21.622249698429574

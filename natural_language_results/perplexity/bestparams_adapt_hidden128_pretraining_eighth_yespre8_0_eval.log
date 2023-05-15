@@ -1,0 +1,13 @@
+2023-05-01 06:03:03,303 INFO     Namespace(directory='CHILDES/pretraining_eighth_8/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=128, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden128_8', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden128_pretraining_eighth_yespre8_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 06:03:12,399 INFO     Vocab size: 10599
+2023-05-01 06:03:13,941 INFO     Model size: 0.3M parameters
+2023-05-01 06:03:14,951 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden128_8
+2023-05-01 06:03:14,995 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden128_pretraining_eighth_yespre8_0
+2023-05-01 06:03:16,227 INFO     Validation loss: 3.70187093218262
+2023-05-01 06:03:16,227 INFO     Validation perplexity: 40.52304935827755
+2023-05-01 06:03:18,669 INFO     Validation (strided) loss: 3.6885818069209084
+2023-05-01 06:03:18,669 INFO     Validation (strided) perplexity: 39.98809588398013
+2023-05-01 06:03:19,726 INFO     Test loss: 3.6106918221048736
+2023-05-01 06:03:19,727 INFO     Test perplexity: 36.991635595636
+2023-05-01 06:08:28,827 INFO     Test (strided) loss: 3.5970161768653566
+2023-05-01 06:08:28,828 INFO     Test (strided) perplexity: 36.489194543846025

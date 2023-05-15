@@ -1,0 +1,13 @@
+2023-05-01 18:00:57,291 INFO     Namespace(directory='CHILDES/pretraining_full_6/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_6', pretrained_vocab_size=15, n_epochs=128, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_full_yespre6_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 18:01:14,015 INFO     Vocab size: 17096
+2023-05-01 18:01:15,568 INFO     Model size: 0.0M parameters
+2023-05-01 18:01:24,781 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_6
+2023-05-01 18:01:24,804 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_full_yespre6_0
+2023-05-01 18:01:26,085 INFO     Validation loss: 4.151638479425042
+2023-05-01 18:01:26,086 INFO     Validation perplexity: 63.538020796912186
+2023-05-01 18:01:28,622 INFO     Validation (strided) loss: 4.147778805739048
+2023-05-01 18:01:28,622 INFO     Validation (strided) perplexity: 63.29325742720576
+2023-05-01 18:01:29,673 INFO     Test loss: 4.081774684364696
+2023-05-01 18:01:29,673 INFO     Test perplexity: 59.25052758505412
+2023-05-01 18:06:50,200 INFO     Test (strided) loss: 4.0783494533049565
+2023-05-01 18:06:50,201 INFO     Test (strided) perplexity: 59.04792801091918

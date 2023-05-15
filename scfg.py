@@ -506,7 +506,6 @@ def primitive_string(primitive):
     else:
         return name
 
-# TO UPDATE: Normalize; take log?
 terminal_top_w = 0.0204
 aorb_top_w = 0.3265
 plus_top_w = 0.3265

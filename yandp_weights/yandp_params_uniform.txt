@@ -1,0 +1,42 @@
+# Uniform probabilities
+
+
+# S productions:
+EPSILON_W 1.0
+TAIL_W 1.0
+INSERT_W 1.0
+APPEND_W 1.0
+PAIR_W 1.0
+IFS_W 1.0
+SETSAMPLE_W 1.0
+FACTOR_W 1.0
+X_W 1.0
+
+# C productions
+HEAD_W 1.0
+IFC_W 1.0
+TERMINAL_W 1.0
+
+# StrSet productions:
+SETTIFY_W 1.0
+UNION_W 1.0
+SETMINUS_W 1.0
+IFSET_W 1.0
+SIGMA_W 1.0
+
+# Prob productions:
+IFP_W 1.0
+PROB_W 1.0
+
+# Bool productions:
+EQUALS_W 1.0
+EMPTY_W 1.0
+AND_W 1.0
+OR_W 1.0
+NOT_W 1.0
+FLIP_W 1.0
+
+
+# For vocab size
+GEOMETRIC_P 0.5
+

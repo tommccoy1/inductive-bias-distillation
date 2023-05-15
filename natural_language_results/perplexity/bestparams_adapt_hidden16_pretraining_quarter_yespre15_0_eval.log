@@ -1,0 +1,13 @@
+2023-05-01 04:59:43,511 INFO     Namespace(directory='CHILDES/pretraining_quarter_15/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_15', pretrained_vocab_size=15, n_epochs=512, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_quarter_yespre15_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 04:59:53,201 INFO     Vocab size: 13460
+2023-05-01 04:59:54,754 INFO     Model size: 0.0M parameters
+2023-05-01 04:59:56,755 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_15
+2023-05-01 04:59:56,778 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_quarter_yespre15_0
+2023-05-01 04:59:57,783 INFO     Validation loss: 4.156005250228026
+2023-05-01 04:59:57,783 INFO     Validation perplexity: 63.81608344708129
+2023-05-01 04:59:59,766 INFO     Validation (strided) loss: 4.152118562940687
+2023-05-01 04:59:59,766 INFO     Validation (strided) perplexity: 63.56853167661266
+2023-05-01 05:00:00,612 INFO     Test loss: 4.08769134622519
+2023-05-01 05:00:00,612 INFO     Test perplexity: 59.60213205850555
+2023-05-01 05:04:16,927 INFO     Test (strided) loss: 4.084431742792742
+2023-05-01 05:04:16,927 INFO     Test (strided) perplexity: 59.40816903726962

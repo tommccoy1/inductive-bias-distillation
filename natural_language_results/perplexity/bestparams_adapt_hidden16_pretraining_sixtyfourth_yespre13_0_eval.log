@@ -1,0 +1,13 @@
+2023-04-30 11:24:37,376 INFO     Namespace(directory='CHILDES/pretraining_sixtyfourth_13/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_13', pretrained_vocab_size=15, n_epochs=8192, eval_every=100, weight_decay=0.01, learning_rate=0.01, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_sixtyfourth_yespre13_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-04-30 11:24:47,685 INFO     Vocab size: 4239
+2023-04-30 11:24:49,160 INFO     Model size: 0.0M parameters
+2023-04-30 11:24:49,341 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_13
+2023-04-30 11:24:49,348 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_sixtyfourth_yespre13_0
+2023-04-30 11:24:50,428 INFO     Validation loss: 4.260095312911529
+2023-04-30 11:24:50,428 INFO     Validation perplexity: 70.81673288161362
+2023-04-30 11:24:52,649 INFO     Validation (strided) loss: 4.257510370665791
+2023-04-30 11:24:52,650 INFO     Validation (strided) perplexity: 70.63391210945103
+2023-04-30 11:24:53,571 INFO     Test loss: 4.200694634979495
+2023-04-30 11:24:53,572 INFO     Test perplexity: 66.73266979151562
+2023-04-30 11:29:23,785 INFO     Test (strided) loss: 4.198334488605162
+2023-04-30 11:29:23,787 INFO     Test (strided) perplexity: 66.57535663691664

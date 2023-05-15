@@ -2,7 +2,10 @@ CHILDES/
 expt_adapt/
 expt_meta_train/
 formal_languages/
+logs/
 __pycache__/
 targeted_evals/
+transformers/
 .venv/
+weights/
 Zorro/

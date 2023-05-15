@@ -1,13 +1,14 @@
 
+
 import math
 import random
 from collections import Counter
 import logging
 
 import numpy as np
+from utils import *
 from yandp import *
 from scfg import random_sync
-from utils import *
 
 import signal
 from contextlib import contextmanager
@@ -17,6 +18,7 @@ from contextlib import contextmanager
 # recursion (or in recursion that will eventually terminate, but only
 # after recursing much more than we want). This time limit allows us
 # to cut a process short if it is taking too long, to avoid such scenarios.
+# Code from here: https://stackoverflow.com/questions/366682/how-to-limit-execution-time-of-a-function-call
 class TimeoutException(Exception): pass
 
 @contextmanager
@@ -158,8 +160,7 @@ def yandp_dataset(param_file, n_test=10, batch_size=100, eval_batch_size=10, max
 # evaluation languages for Yang & Piantadosi)
 # - list_of_langs: .txt file in the directory formal_languages/ listing the languages to be used in this dataset
 # - training_size, test_size: the training and test size for each episode in the dataset
-#   consistency across experiments/conditions
-# - max_batches_per_language: max number of batches per dataset
+# - batch_size, eval_batch_size: batch sizes for each episode's training and evaluation
 def formal_dataset(list_of_langs, training_size=100, test_size=10, batch_size=100, eval_batch_size=10):
 
     # Create our list of languages (with their descriptions)
@@ -192,7 +193,7 @@ def formal_dataset(list_of_langs, training_size=100, test_size=10, batch_size=10
         random.seed(seed)
         np.random.seed(seed)
 
-        filename, description = langs[i%len(langs)]
+        filename, description = langs[seed%len(langs)]
 
         # From this file, retrieve all strings in the language
         fi = open("formal_languages/Fleet/Models/FormalLanguageTheory-Complex/data/" + filename + ".txt", "r")
@@ -246,7 +247,7 @@ def formal_dataset(list_of_langs, training_size=100, test_size=10, batch_size=10
         dataset["train"] = training_list
 
         # Produce the test set
-        corpus_test = random.choices(new_strings, weights=counts, k=test_size)
+        corpus_test = new_strings[:25]
         dataset["test"] = corpus_test
             
         dataset["name"] = filename

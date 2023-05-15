@@ -1,0 +1,13 @@
+2023-05-01 05:29:53,756 INFO     Namespace(directory='CHILDES/pretraining_half_6/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=16, n_positions=256, n_head=12, n_layer=2, dropout=0.1, pretrained_name='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_6', pretrained_vocab_size=15, n_epochs=256, eval_every=100, weight_decay=0.01, learning_rate=0.005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden16_pretraining_half_yespre6_0', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_extra=False, eval_priming=False, eval_plausibility=False, eval_subjaux=False, eval_blimp=False, eval_agr=False, eval_test=True, eval_suffix=None, eval_perplexity_difference=False, perplexity_difference_model_name=None)
+2023-05-01 05:30:07,710 INFO     Vocab size: 15716
+2023-05-01 05:30:09,221 INFO     Model size: 0.0M parameters
+2023-05-01 05:30:13,895 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/meta_lm_hidden16_6
+2023-05-01 05:30:13,928 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden16_pretraining_half_yespre6_0
+2023-05-01 05:30:15,192 INFO     Validation loss: 4.147422008368426
+2023-05-01 05:30:15,192 INFO     Validation perplexity: 63.270678587652455
+2023-05-01 05:30:17,774 INFO     Validation (strided) loss: 4.143553533508327
+2023-05-01 05:30:17,774 INFO     Validation (strided) perplexity: 63.02639037421058
+2023-05-01 05:30:18,832 INFO     Test loss: 4.07977065534582
+2023-05-01 05:30:18,832 INFO     Test perplexity: 59.13190670792974
+2023-05-01 05:35:42,385 INFO     Test (strided) loss: 4.076111676586676
+2023-05-01 05:35:42,385 INFO     Test (strided) perplexity: 58.91593966765367
