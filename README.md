@@ -30,7 +30,7 @@ python figure2_stats.py
 ```
 The steps listed below describe all of the scripts whose results are aggregated by this command.
 
-1. Bayesian learner from Yang and Piantadosi: The directory `formal_language_results/yandp/` contains files for dealing with Yang and Piantadosi's results. `yandp_results.txt` gives the results from their [https://www.pnas.org/doi/abs/10.1073/pnas.2021865119#supplementary-materials](supplementary materials); the 6 columns are: (i) language description; (ii) number of factors; (iii) number of training examples; (iv) precision; (v) recall; and (vi) posterior. If you use these data, please cite [https://www.pnas.org/doi/abs/10.1073/pnas.2021865119](Yang and Piantadosi 2022).
+1. Bayesian learner from Yang and Piantadosi: The directory `formal_language_results/yandp/` contains files for dealing with Yang and Piantadosi's results. `yandp_results.txt` gives the results from their [supplementary materials](https://www.pnas.org/doi/abs/10.1073/pnas.2021865119#supplementary-materials); the 6 columns are: (i) language description; (ii) number of factors; (iii) number of training examples; (iv) precision; (v) recall; and (vi) posterior. If you use these data, please cite [Yang and Piantadosi 2022](https://www.pnas.org/doi/abs/10.1073/pnas.2021865119).
 
 2. Prior-trained neural network:
 - First, perform inductive bias distillation. The commands that we used are in `formal_language_results/prior_trained/meta_training.sh`. Each command performs one run; we did 40 runs of the case with size 1024 and 20 runs for the other sizes. Each one takes 1 to 2 days on an A100 GPU.
@@ -106,7 +106,7 @@ The steps listed below describe all of the scripts whose results are aggregated 
 git clone https://github.com/phueb/Zorro.git
 ```
 
-2. The BLiMP_CHILDES dataset is already present in this repo, in the folder `blimp_childes`. It was created by running the BLiMP generation pipeline from [https://github.com/alexwarstadt/data_generation/tree/blimp](https://github.com/alexwarstadt/data_generation/tree/blimp) except with the vocabulary (`vocabulary.csv` in that repo) filtered to only include words that appear at least 10 times in our CHILDES training set. If you use this dataset, please cite [https://aclanthology.org/2020.tacl-1.25/](the BLiMP paper) by Warstadt et al. 
+2. The BLiMP_CHILDES dataset is already present in this repo, in the folder `blimp_childes`. It was created by running the BLiMP generation pipeline from [https://github.com/alexwarstadt/data_generation/tree/blimp](https://github.com/alexwarstadt/data_generation/tree/blimp) except with the vocabulary (`vocabulary.csv` in that repo) filtered to only include words that appear at least 10 times in our CHILDES training set. If you use this dataset, please cite [the BLiMP paper](https://aclanthology.org/2020.tacl-1.25/) by Warstadt et al. 
 
 3. The SCaMP dataset, and the recursion and priming datasets, are already present in this repo, in the folders `scamp/scamp_plausible`, `scamp/scamp_implausible`. `scamp/recursion`, and `scamp/scamp_priming`. See `scamp/README.md` for more information.
 
