@@ -182,7 +182,7 @@ cd formal_languages/
 git clone https://github.com/piantado/Fleet.git
 ```
 
-2. Download CHILDES data. TODO: Get this uploaded somehow/somewhere.
+2. Download CHILDES data by following [the instructions provided by the authors of the paper introducing that dataset](https://github.com/adityayedetore/lm-povstim-with-childes/tree/master/data/CHILDES).
 ```
 # Dividing up the files
 cd CHILDES
@@ -191,7 +191,7 @@ python divide_training.py
 python make_training_sets.py
 ```
 
-3. Download Zorro. TODO: Describe
+3. Download the Zorro dataset from the [repository provided by Huebner et al.](https://github.com/phueb/Zorro/tree/master/sentences/babyberta)
 
 
 

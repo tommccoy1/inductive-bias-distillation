@@ -93,7 +93,8 @@ for category in nopre_values:
     print("Nopre", sorted(nopre_values[category]))
     print("Yespre", sorted(yespre_values[category]))
     print("Nopre", no_mean) 
-    print("Yespre", yes_mean) 
+    print("Yespre", yes_mean)
+    print(scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])))
     print("Pvalue", pvalue) 
     print("")
 

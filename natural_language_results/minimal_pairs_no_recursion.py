@@ -101,5 +101,6 @@ for index in range(n_runs):
 
 print("Mean yes", statistics.mean(total_scores_yes))
 print("Mean no", statistics.mean(total_scores_no))
-pvalue = scipy.stats.ttest_ind(a=np.array(total_scores_yes), b=np.array(total_scores_no)).pvalue
+print(scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes)))
+pvalue = scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes)).pvalue
 print("P-value", pvalue)
