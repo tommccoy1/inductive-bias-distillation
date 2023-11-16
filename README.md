@@ -1,7 +1,14 @@
 
 
 # Getting started
-1. Set the values in `config.py` to whatever you want the default directories to be.
+0. We ran our experiments on the operating system Springdale Linux 8, but it should work on any system that can run Python. The installation steps below should take approximately 10 minutes.
+
+1. Set the values in `config.py` to whatever you want the default directories to be. Assuming that you want to stick with the ones listed there already, you should create the relevant directories under the main project folder. That is, first navigate to the `inductive_bias_distillation/` folder and then run:
+```
+mkdir logs
+mkdir weights
+mkdir transformers
+```
 
 2. Create a python venv to run code in (the code was developed with Python 3.9.12, but the specific version probably doesn't matter much, as long as it is some version of Python 3):
 ```
@@ -16,10 +23,74 @@ source .venv/bin/activate
 4. Install requirements
 ```
 pip install -U pip setuptools wheel
+
+# The torch version that we used was 2.0.0+cu117
 pip install torch
+
+# The transformers version that we used was 4.26.1
 pip install transformers
+
+# The higher version that we used was 0.2.1
 pip install higher
 ```
+
+
+# Quickstart
+Here is a quick, simple example illustrating the inductive bias distillation procedure. Running this should take about 10 minutes. In this case, we are working with a space of "languages" where each "sentence" in a language is a sequence of numbers. Within a given language, all sequences are the same length, all sequences have the same first element as each other, and all sequences have the same last element as each other - but the elements in the middle can be any numbers. Here are some example languages in this framing:
+```
+Language 1: sequence length = 4, first element = 7, last element = 2
+Example sequences:
+7 3 9 2
+7 8 6 2
+7 7 9 2
+7 2 5 2
+7 3 3 2
+
+Language 2: sequence length = 7, first element = 8, last element = 4
+Example sequences:
+8 7 4 5 8 4 4
+8 3 1 0 3 3 4
+8 2 1 9 7 6 4
+8 4 8 5 6 3 4
+8 7 5 3 5 3 4
+```
+
+In principle, a learner should be able to figure out the rule defining a language after seeing only one example in that language - but only if the learner has inductive biases encoding the parameters that govern this space of languages. In this example, we will use inductive bias distillation to create neural networks that have these inductive biases.
+
+1. As a baseline, first test out a model that has not undergone inductive bias distillation by running this line of code:
+```
+python meta_train.py --n_meta_train 0 --n_meta_valid 20 --n_meta_test 10 --meta_train_batch_size 1 --meta_eval_batch_size 1 --max_batches_per_language 1 --meta_test_size 10 --dataset simple --architecture LSTM --n_embd 64 --n_layer 1 --eval_every 200 --learning_rate 0.005 --inner_lr 1.0 --warmup_proportion 0.5 --model_name random --eval_generate --eval
+```
+This code will train a standard (not meta-trained) neural network on one example from a language, and then ask the neural network to generate additional examples from that language. Unsurprisingly, the neural network will not do well here, because it has no way to know what sorts of rules govern the languages. Below is one sample output; based on the training example, we can see that the language uses sequences of length 4 starting with 1 and ending with 7. But after training the network on this example, the samples that it produces do not adhere to these constraints (unsurprisingly). Note that you might get different outputs from the model, but you should get the same basic result of the model failing to generalize in the intended way.
+```
+TRAINING EXAMPLE(S):
+1 5 3 7
+SEQUENCES SAMPLED FROM TRAINED MODEL:
+5 5 7
+7 2 0 8 9 8 7 7 8 5 3 8 3 4 3 3 2 0 5 1 0 5 1 3 0 4 9
+1 5 9 5 2 2 6 0 8 6 2 5 4 8
+9
+5 3 9
+```
+
+2. Now let's use inductive bias distillation to create a neural network that is able to make the sorts of inferences required to learn one of these "languages" from a single example:
+```
+python meta_train.py --n_meta_train 5000 --n_meta_valid 20 --n_meta_test 10 --meta_train_batch_size 1 --meta_eval_batch_size 1 --max_batches_per_language 1 --meta_test_size 10 --dataset simple --architecture LSTM --n_embd 64 --n_layer 1 --eval_every 200 --learning_rate 0.005 --inner_lr 1.0 --warmup_proportion 0.5 --model_name tmp --eval_generate
+```
+The above line of code will first have the network undergo meta-learning, where it is exposed to many languages sampled from the space of possible languages. You should see the code printing out validation losses and perplexities, which should be going down, indicating that the model is successfully meta-learning.
+
+Once meta-learning concludes, the model will be evaluated in the same way as our baseline model was evaluated in step (1) above. But now it should do a much better job of adhering to the constraints illustrated by the training example. For instance, after being trained on the same example as above, the model now correctly produces sequences that obey the relevant constraints (having length 4, starting with 1, and ending with 7). Note that the specific outputs that you get might vary, but you should get the same basic finding that the model now generalizes well.
+```
+TRAINING EXAMPLE(S):
+1 5 3 7
+SEQUENCES SAMPLED FROM TRAINED MODEL:
+1 0 7 7
+1 2 2 7
+1 2 4 7
+1 2 0 7
+1 8 4 7
+```
+
 
 
 # Replicating formal language results (Figure 2)

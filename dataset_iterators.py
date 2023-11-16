@@ -38,19 +38,19 @@ def time_limit(seconds):
 # a fixed last token, and a fixed length
 def simple_dataset(vocab_size):
 
-    def create_simple_dataset(seed):
+    def create_simple_dataset(seed, remembered_languages=None):
         random.seed(seed)
 
         # The seq length is really 2 plus this,
         # after we've added in the first and
         # last elements
-        seqsize = random.choice(list(range(vocab_size)))
+        seqsize = random.choice(list(range(5))) + 1
 
         first = random.choice(list(range(vocab_size)))
         last = random.choice(list(range(vocab_size)))
 
         seqs = []
-        for i in range(110):
+        for i in range(101):
 
             seq = [first]
             for _ in range(seqsize):
@@ -61,11 +61,11 @@ def simple_dataset(vocab_size):
             seqs.append(" ".join([str(elt) for elt in seq]))
 
             dataset = {}
-        dataset["train"] = seqs[:100]
-        dataset["test"] = seqs[100:]
+        dataset["train"] = seqs[:1]
+        dataset["test"] = seqs[1:]
 
-        dataset["train_batch_size"] = 100
-        dataset["eval_batch_size"] = 10
+        dataset["train_batch_size"] = 1
+        dataset["eval_batch_size"] = 100
 
         return dataset
 

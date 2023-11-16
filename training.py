@@ -272,7 +272,7 @@ class MetaTrainer(Trainer):
 
 
 
-    def prediction_step(self, model, inputs):
+    def prediction_step(self, model, inputs, print_samples=False):
         
         with torch.backends.cudnn.flags(enabled=False):
         
@@ -292,6 +292,21 @@ class MetaTrainer(Trainer):
 
             # Evaluate on the test set for this episode
             outer_loss = fmodel(test)["loss"].detach()
+
+            # Print sequences sampled from the trained model
+            # This is intended only for use in the quickstart example
+            # with the dataset 'simple'
+            if print_samples:
+
+                input_ids = self.tokenizer(["<bos>"], add_special_tokens=False, return_tensors="pt").to(device)["input_ids"]
+
+                # Pure sampling
+                logging.info("SEQUENCES SAMPLED FROM TRAINED MODEL:")
+                for _ in range(5):
+                    text = fmodel.generate(input_ids, do_sample=True, max_length=100, top_p=1.00, top_k=0, early_stopping=True, pad_token_id=self.tokenizer.pad_token_id, eos_token_id=3)
+                    text = self.tokenizer.decode(text[0], skip_special_tokens=True)
+                    logging.info(text)
+
 
             return outer_loss
 

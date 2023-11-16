@@ -77,6 +77,7 @@ parser.add_argument("--log_dir", help="Directory to save logs in", type=str, def
 parser.add_argument("--eval", help="Just evaluate, don't train", action='store_true')
 parser.add_argument("--eval_formal", help="evaluate on formal languages", action='store_true')
 parser.add_argument("--eval_valid", help="evaluate on the validation set", action='store_true')
+parser.add_argument("--eval_generate", help="print examples sampled from the language model", action='store_true')
 parser.add_argument("--top_p", help="Probability mass to truncate the probability distribution to when sampling from an LM for precision and recall", type=float, default=1.00)
 parser.add_argument("--hot_temperature", help="Temperature to apply when sampling from an LM for precision and recall", type=float, default=1.00)
 parser.add_argument("--cold_temperature", help="Temperature to use when reranking LM outputs", type=float, default=1.00)
@@ -229,6 +230,17 @@ if not args.model_name.startswith("random"):
 
 if (not args.eval) or args.eval_valid:
     trainer.evaluate(eval_datasplit=meta_dataset.valid, name="Validation")
+
+if args.eval_generate:
+    logging.info("")
+    meta_dataset.valid.reset()
+    for batch in meta_dataset.valid:
+        logging.info("TRAINING EXAMPLE(S):")
+        for train_seq in batch["train_batches"]:
+            logging.info(trainer.tokenizer.decode(train_seq["input_ids"][0], skip_special_tokens=True))
+        trainer.prediction_step(trainer.model, batch, print_samples=True)
+        logging.info("")
+        logging.info("")
 
 if args.eval_formal:
 
