@@ -32,6 +32,9 @@ pip install transformers
 
 # The higher version that we used was 0.2.1
 pip install higher
+
+# The jsonlines version that we used was 4.0.0
+pip install jsonlines
 ```
 
 

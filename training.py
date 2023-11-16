@@ -6,6 +6,7 @@ import os
 from collections import Counter
 import copy
 import random
+import sys
 
 import torch
 import higher
@@ -229,7 +230,11 @@ class MetaTrainer(Trainer):
         super(MetaTrainer, self).__init__(**kwargs)
 
         self.inner_lr = inner_lr
+        
+        tmp_recursion_limit = sys.getrecursionlimit()
+        sys.setrecursionlimit(1000)
         self.inner_opt = torch.optim.SGD(self.model.parameters(), lr=self.inner_lr)
+        sys.setrecursionlimit(tmp_recursion_limit)
 
         self.multi_step_loss = multi_step_loss
 
