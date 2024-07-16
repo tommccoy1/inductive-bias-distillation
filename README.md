@@ -96,11 +96,11 @@ SEQUENCES SAMPLED FROM TRAINED MODEL:
 
 
 
-# Replicating formal language results (Figure 2)
+# Replicating formal language results (Figure 3)
 
-0. The numbers used for Figure 2 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following in the directory `formal_language_results/`:
+0. The numbers used for Figure 3 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following in the directory `formal_language_results/`:
 ```
-python figure2_stats.py
+python figure3_stats.py
 ```
 The steps listed below describe all of the scripts whose results are aggregated by this command.
 
@@ -124,14 +124,14 @@ The steps listed below describe all of the scripts whose results are aggregated 
 
 
 
-# Replicating perplexity results (Figure 3)
+# Replicating perplexity results (Figure 4)
 
-0. The numbers used in Figure 3 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following in the directory `natural_language_results`. In the output, `no` means a standard neural network, while `yes` means a prior-trained one.
+0. The numbers used in Figure 4 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following in the directory `natural_language_results`. In the output, `no` means a standard neural network, while `yes` means a prior-trained one.
 ```
-# Figure 3A
+# Figure 4a
 python perplexity_1024.py 
 
-# Figure 3B
+# Figure 4b
 python perplexity_all.py
 ```
 The steps listed below describe all of the scripts whose results are aggregated by these commands.
@@ -143,7 +143,7 @@ python divide_training.py
 python make_training_sets.py
 ``` 
 
-2. Train language models on these datasets. The commands to do this are in `natural_language_results/perplexity/adapt_besthyps_nopre.sh` and `natural_language_results/perplexity/adapt_besthyps_yespre.sh`. Each command needs to be run once to replicate all of our results; these commands vary widely in execution time (from a few minutes to about 1 day, on an A100 GPU). This yields 20 runs for each cell in the heatmap (Fig. 3B) and 40 runs for the largest-scale case (1024 hidden units and the full training set).
+2. Train language models on these datasets. The commands to do this are in `natural_language_results/perplexity/adapt_besthyps_nopre.sh` and `natural_language_results/perplexity/adapt_besthyps_yespre.sh`. Each command needs to be run once to replicate all of our results; these commands vary widely in execution time (from a few minutes to about 1 day, on an A100 GPU). This yields 20 runs for each cell in the heatmap (Fig. 4b) and 40 runs for the largest-scale case (1024 hidden units and the full training set).
 
 3. Compute perplexity on the test set. The commands for doing this are in `natural_language_results/perplexity/test_perplexity_for_heatmap.sh` and `natural_language_results/perplexity/test_perplexity_1024full.sh`. The results of running these commands are in the `.log` files in `natural_language_results/perplexity/`.
 
@@ -153,7 +153,7 @@ python make_training_sets.py
 Running `python yandp.py` samples languages from Yang & Piantadosi's prior and logs statistics in `yandp_stats/yandp_stats.log`. The file shows the proportion of sampled languages that only generate the empty string (ONLY EPSILON), that have a maximum length of 1 (MAX LENGTH 1), that only produce one unique string (ONLY ONE UNIQUE), and that have both more than one unique string and a maximum length greater than 1 (LONG AND DIVERSE).
 
 
-# Replicating targeted evaluation results (Figure 4)
+# Replicating targeted evaluation results (Figure 5)
 
 0. The numbers used in Figure 4 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following in the directory `natural_language_results`. In the output, `no` means a standard neural network, while `yes` means a prior-trained one.
 ```
@@ -185,6 +185,53 @@ git clone https://github.com/phueb/Zorro.git
 3. The SCaMP dataset, and the recursion and priming datasets, are already present in this repo, in the folders `scamp/scamp_plausible`, `scamp/scamp_implausible`. `scamp/recursion`, and `scamp/scamp_priming`. See `scamp/README.md` for more information.
 
 4. To evaluate on all of these datasets, run the scripts in `natural_language_results/targeted_evaluations/targeted_evals.sh`.
+
+
+# Replicating ablation results (Figure 6)
+
+0. The numbers used in Figure 6 were produced by aggregating the results of many other scripts. To reproduce that aggregation step and see the numerical results, run the following.
+```
+cd ablation_formal_results/
+
+# Figure 6a (left) results
+python ablation_stats_recursion.py  
+
+# Figure 6a (right) results
+python ablation_stats_synchrony.py
+
+# Figure 6b results
+cd ../ablation_natural_results/
+python recursion.py
+
+# Figure 6c results
+python priming.py
+
+```
+
+1. To create the results that the above commands aggregate, we took the following steps. First, we meta-trained models on the `no synchrony` and `no recursion` sets of primitives by running the commands in `ablation_formal_results/no_synchrony/meta_training.sh` and `ablation_formal_results/no_recursion/meta_training.sh`. We ran each of these commands 20 times, and each run took 1 to 2 days on an A100 GPU.
+
+
+2. To adapt the meta-trained models to formal languages, we ran the commands in the following files. Each shows only the model with index `17`; these commands need to be run for all indices from `0` to `19` (which is done by replacing `17` with the relevant index).
+```
+all_primitives/adapt.sh
+no_synchrony/adapt.sh
+no_recursion/adapt.sh
+standard/adapt.sh
+```
+
+3. To train the meta-trained models on the English corpus, we ran the commands in the following files. Each shows only the model with index `17`; these commands need to be run for all indices from `0` to `19` (which is done by replacing `17` with the relevant index).
+```
+ablation_natural_results/no_synchrony/adapt.sh
+ablation_natural_results/no_recursion/adapt.sh
+```
+
+4. To get the evaluation results on the priming and synchrony tests, we ran the commands in the following files. Each shows only the model with index `17`; these commands need to be run for all indices from `0` to `19` (which is done by replacing `17` with the relevant index).
+```
+ablation_natural_results/no_synchrony/evaluate.sh
+ablation_natural_results/no_recursion/evaluate.sh
+``` 
+
+
 
 
 # Replicating targeted evaluation results in the supplement

@@ -43,7 +43,7 @@ for pre in ["nopre", "yespre", "yespre_nosync", "yespre_norec"]:
     for index in range(n_runs):
         
         if pre == "nopre":
-            directory = "standard/"
+            directory = "../natural_language_results/targeted_evaluations/"
             model_name = "bestparams_adapt_hidden1024_pretraining_full_nopre_" + str(index) + "_eval_priming.log"
         elif pre == "yespre_nosync":
             directory = "no_synchrony/"
@@ -52,7 +52,7 @@ for pre in ["nopre", "yespre", "yespre_nosync", "yespre_norec"]:
             directory = "no_recursion/"
             model_name = "adapt_no_recursion_hidden1024_" + str(index) + "_0_eval_priming.log"
         else:
-            directory = "all_primitives/"
+            directory = "../natural_language_results/targeted_evaluations/"
             model_name = "bestparams_adapt_hidden1024_pretraining_full_yespre" + str(index) + "_0_eval_priming.log"
 
         fi = open(directory + model_name, "r")
