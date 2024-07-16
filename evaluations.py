@@ -4,8 +4,11 @@ import logging
 import torch
 
 import copy
+import sys
 
 from dataset_iterators import *
+
+sys.setrecursionlimit(10000)
 from dataloading import *
 from training import *
 
@@ -501,6 +504,10 @@ def eval_formal(model, language_list, formal_train_size=None, formal_test_size=N
         n_langs = 20
     elif language_list == "validation_languages":
         n_langs = 20
+    elif language_list == "language_list_recursion":
+        n_langs = 8
+    elif language_list == "language_list_synchrony":
+        n_langs = 8
 
     yandp_dataset = formal_dataset(language_list, training_size=formal_train_size, test_size=formal_test_size, batch_size=meta_train_batch_size)
     
@@ -544,9 +551,6 @@ def eval_formal(model, language_list, formal_train_size=None, formal_test_size=N
     logging.info("Average memorization Y&P recall: " + str(total_mem_recall / denom))
     logging.info("Average memorization Y&P F-score: " + str(total_mem_fscore / denom))
     logging.info("")
-
-
-
 
 
 
