@@ -1,0 +1,16 @@
+abb	341
+ababbb	221
+abababbbb	154
+ababababbbbb	84
+abababababbbbbb	65
+ababababababbbbbbb	50
+abababababababbbbbbbb	28
+ababababababababbbbbbbbb	16
+abababababababababbbbbbbbbb	15
+abababababababababababbbbbbbbbbbb	7
+ababababababababababbbbbbbbbbb	6
+abababababababababababababbbbbbbbbbbbbb	5
+ababababababababababababbbbbbbbbbbbb	4
+abababababababababababababababbbbbbbbbbbbbbbb	2
+abababababababababababababababababababababababbbbbbbbbbbbbbbbbbbbbbbb	1
+ababababababababababababababababababababbbbbbbbbbbbbbbbbbbbb	1

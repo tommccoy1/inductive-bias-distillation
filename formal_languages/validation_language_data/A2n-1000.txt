@@ -1,0 +1,17 @@
+aa	362
+aaaa	210
+aaaaaa	136
+aaaaaaaa	85
+aaaaaaaaaa	68
+aaaaaaaaaaaa	43
+aaaaaaaaaaaaaa	37
+aaaaaaaaaaaaaaaa	20
+aaaaaaaaaaaaaaaaaaaa	12
+aaaaaaaaaaaaaaaaaa	8
+aaaaaaaaaaaaaaaaaaaaaaaa	5
+aaaaaaaaaaaaaaaaaaaaaaaaaa	5
+aaaaaaaaaaaaaaaaaaaaaa	4
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa	2
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	1
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	1
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	1

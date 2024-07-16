@@ -1,0 +1,16 @@
+aab	340
+aaaabb	219
+aaaaaabbb	145
+aaaaaaaabbbb	91
+aaaaaaaaaabbbbb	72
+aaaaaaaaaaaabbbbbb	37
+aaaaaaaaaaaaaabbbbbbb	35
+aaaaaaaaaaaaaaaaaabbbbbbbbb	18
+aaaaaaaaaaaaaaaabbbbbbbb	15
+aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb	9
+aaaaaaaaaaaaaaaaaaaabbbbbbbbbb	7
+aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbb	6
+aaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbb	3
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbb	1
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb	1
+aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbb	1

@@ -1,0 +1,9 @@
+XXR	X X^R (even-length palindromes)
+XXRI	X (X^R)^I
+AnBn	A^n B^n
+Dyck	Balanced sequences of parentheses
+ABn	(AB)^n
+AnBmCnpm	A^n B^m C^(n+m)
+Even	Strings over {A, B} where A's only appear in even-length groups
+An	Any number of As
+

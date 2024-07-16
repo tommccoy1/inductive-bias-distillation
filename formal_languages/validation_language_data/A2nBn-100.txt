@@ -1,0 +1,10 @@
+aab	32
+aaaabb	25
+aaaaaabbb	16
+aaaaaaaabbbb	11
+aaaaaaaaaabbbbb	5
+aaaaaaaaaaaabbbbbb	4
+aaaaaaaaaaaaaabbbbbbb	4
+aaaaaaaaaaaaaaaaaabbbbbbbbb	1
+aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb	1
+aaaaaaaaaaaaaaaabbbbbbbb	1

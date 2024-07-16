@@ -1,0 +1,65 @@
+An	Any number of As
+AB	Sigma* over {A, B}
+ABn	(AB)^n
+AAA	A, AA, or AAA
+AAAA	A, AA, AAA, or AAAA
+AnBm	A^n B^m (n and m can be equal)
+GoldenMean	Strings over {A, B} where no 2 A's ever appear in a row
+Even	Strings over {A, B} where A's only appear in even-length groups
+
+ApBAp	A+ B A+
+ApBApp	A+ (B A+)+
+AsBAsp	A* (B A*)+
+CountA2	Strings over {A, B} whre the number of A's is at least 2
+CountAEven	Strings over {A, B} where the number of A's is even
+aABb	a Sigma+ b
+AnBn	A^n B^n
+Dyck	Balanced sequences of parentheses
+
+AnB2n	A^n B^(2n)
+AnCBn	A^n C B^n
+AnABn	A^n (AB)^n
+ABnABAn	(AB)^n (ABA)^n
+AnBmCn	A^n B^m C^n
+AnBmA2n	A^n B^m A^(2n)
+AnBnC2n	A^n B^n C^(2n)
+AnBmCm	A^n B^m C^m
+
+AnBmCnpm	A^n B^m C^(n+m)
+AnBmCnm	A^n B^m C^(n*m)
+AnBk	A^n B^(n+m)
+AnBmCmAn	A^n B^m C^m A^n
+AnB2nC3n	A^n B^2n C^3n
+AnBnp1Cnp2	A^n B^(n+1) C^(n+2)
+AnUBn	A^n | B^n
+AnUAnBn	A^n | (A^n B^n)
+
+ABnUBAn	(AB)^n | (BA)^n
+XX	XX (two copies of the same string)
+XXX	XXX
+XY	XY: X != Y (2 non-empty strings that are not identical; could include BBBB = B + BBB)
+XXR	X X^R (even-length palindromes)
+XXI	X X^I (where X^I is the inverse of X - replace every A with B and vice-versa)
+XXRI	X (X^R)^I
+An2	A^(n^2)
+
+AnBmCnDm	A^n B^m C^n D^m
+AnBmAnBm	A^n B^m A^n B^m
+AnBmAnBmCCC	A^n B^m A^n B^m CCC
+AnBnCn	A^n B^n C^n
+AnBnCnDn	A^n B^n C^n D^n
+AnBnCnDnEn	A^n B^n C^n D^n E^n
+A2en	A^(2^n)
+ABnen	(AB)^(n^2)
+
+Count	Any prefix of [b, bb, bbb, bbbb, ...], with a's separating the elements of the prefix
+ChineseNumeral	Several groups of b's joined with a single a separating each; each group of b's must be shorter than the previous one
+ABAnBn	Sigma+ A^ B^n (except it seems to be missing some short ones, like aab)
+ABaaaAB	Sigma+ AAA Sigma+
+Unequal	Strings over {A, B} with an unequal number of A's and B's
+Bach2	Strings over {A, B} with an equal number of A's and B's
+Bach3	Strings over {A, B, C} with an equal number of A's, B's, and C's
+WeW	X^|X| (that is, a string X repeated |X| times, where |X| is the length of X)
+
+
+

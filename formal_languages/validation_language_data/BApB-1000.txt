@@ -1,0 +1,15 @@
+bab	344
+baab	209
+baaab	161
+baaaab	86
+baaaaab	66
+baaaaaab	57
+baaaaaaab	32
+baaaaaaaab	15
+baaaaaaaaab	12
+baaaaaaaaaab	5
+baaaaaaaaaaab	5
+baaaaaaaaaaaab	5
+baaaaaaaaaaaaaaaab	1
+baaaaaaaaaaaaab	1
+baaaaaaaaaaaaaaaaaaaaaaaaab	1

@@ -1,0 +1,11 @@
+
+XX	XX (two copies of the same string)
+XXX	XXX
+AnBnCn	A^n B^n C^n
+AnBnCnDn	A^n B^n C^n D^n
+AnBnCnDnEn	A^n B^n C^n D^n E^n
+AnBmCnDm	A^n B^m C^n D^m
+AnBmAnBm	A^n B^m A^n B^m
+XXI	X X^I (where X^I is the inverse of X - replace every A with B and vice-versa)
+
+

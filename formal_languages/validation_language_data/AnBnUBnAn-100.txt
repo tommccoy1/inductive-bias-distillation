@@ -1,0 +1,16 @@
+ab	21
+ba	19
+aabb	10
+bbbaaa	8
+aaabbb	8
+bbbbbbaaaaaa	7
+bbaa	7
+bbbbaaaa	4
+aaaaabbbbb	3
+aaaaaaabbbbbbb	3
+aaaabbbb	3
+bbbbbbbbaaaaaaaa	2
+aaaaaabbbbbb	2
+aaaaaaaaaabbbbbbbbbb	1
+bbbbbbbaaaaaaa	1
+bbbbbbbbbaaaaaaaaa	1

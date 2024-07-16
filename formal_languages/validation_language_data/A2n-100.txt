@@ -1,0 +1,12 @@
+aa	34
+aaaa	18
+aaaaaa	15
+aaaaaaaa	10
+aaaaaaaaaa	7
+aaaaaaaaaaaaaa	5
+aaaaaaaaaaaa	4
+aaaaaaaaaaaaaaaaaa	2
+aaaaaaaaaaaaaaaaaaaa	2
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	1
+aaaaaaaaaaaaaaaaaaaaaa	1
+aaaaaaaaaaaaaaaaaaaaaaaa	1

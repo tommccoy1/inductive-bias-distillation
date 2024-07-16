@@ -1,0 +1,10 @@
+abb	31
+aabbb	27
+aaabbbb	12
+aaaaabbbbbb	7
+aaaaaabbbbbbb	7
+aaaabbbbb	6
+aaaaaaabbbbbbbb	6
+aaaaaaaaabbbbbbbbbb	2
+aaaaaaaaaaaaaaabbbbbbbbbbbbbbbb	1
+aaaaaaaaaaaabbbbbbbbbbbbb	1

@@ -1,0 +1,3 @@
+aab	4
+ab	3
+aaab	3

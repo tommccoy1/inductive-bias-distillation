@@ -1,0 +1,5 @@
+aaaa	5
+aaaaaa	2
+aaaaaaaa	1
+aa	1
+aaaaaaaaaa	1

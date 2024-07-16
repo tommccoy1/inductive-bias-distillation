@@ -1,0 +1,7 @@
+baaa	3
+baa	2
+baaaaa	1
+baaabaaaaaaaaababaaaa	1
+baaaabaaaaaaaaaaa	1
+baaabababaaaaaa	1
+baaaaaaaaaa	1

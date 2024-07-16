@@ -1,0 +1,11 @@
+aba	28
+aabaa	22
+aaaabaaaa	13
+aaabaaa	12
+aaaaabaaaaa	9
+aaaaaabaaaaaa	5
+aaaaaaabaaaaaaa	4
+aaaaaaaabaaaaaaaa	2
+aaaaaaaaaaaaaabaaaaaaaaaaaaaa	2
+aaaaaaaaabaaaaaaaaa	2
+aaaaaaaaaaaaabaaaaaaaaaaaaa	1

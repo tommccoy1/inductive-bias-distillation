@@ -1,0 +1,4 @@
+aab	4
+aaaaaabbb	3
+aaaaaaaaaabbbbb	2
+aaaaaaaaaaaabbbbbb	1

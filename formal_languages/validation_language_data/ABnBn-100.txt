@@ -1,0 +1,8 @@
+abb	32
+ababbb	18
+abababbbb	13
+ababababbbbb	12
+abababababbbbbb	11
+ababababababbbbbbb	7
+abababababababbbbbbbb	5
+ababababababababbbbbbbbb	2

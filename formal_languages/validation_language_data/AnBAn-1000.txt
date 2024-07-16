@@ -1,0 +1,17 @@
+aba	336
+aabaa	213
+aaabaaa	138
+aaaabaaaa	104
+aaaaabaaaaa	81
+aaaaaabaaaaaa	42
+aaaaaaabaaaaaaa	31
+aaaaaaaabaaaaaaaa	16
+aaaaaaaaabaaaaaaaaa	12
+aaaaaaaaaabaaaaaaaaaa	7
+aaaaaaaaaaabaaaaaaaaaaa	6
+aaaaaaaaaaaaaabaaaaaaaaaaaaaa	4
+aaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa	3
+aaaaaaaaaaaabaaaaaaaaaaaa	3
+aaaaaaaaaaaaabaaaaaaaaaaaaa	2
+aaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaa	1
+aaaaaaaaaaaaaaabaaaaaaaaaaaaaaa	1

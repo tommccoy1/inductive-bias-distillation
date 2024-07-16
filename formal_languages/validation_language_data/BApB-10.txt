@@ -1,0 +1,5 @@
+bab	4
+baaab	3
+baaaaaaaaaaab	1
+baab	1
+baaaaaab	1

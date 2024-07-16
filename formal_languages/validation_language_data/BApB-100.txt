@@ -1,0 +1,10 @@
+bab	36
+baab	25
+baaab	14
+baaaab	6
+baaaaab	6
+baaaaaaab	5
+baaaaaab	4
+baaaaaaaaaab	2
+baaaaaaaab	1
+baaaaaaaaab	1

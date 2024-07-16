@@ -1,0 +1,26 @@
+
+BApB	Any number of A's, in the middle of two B's
+AAAB	AB, AAB, or AAAB
+bAB	Any string starting with b
+Odd	Any string with an odd length
+BAppAp	(B A+)+ A+
+
+IncludesA	Any string containing and A
+CountAOdd	Any string with an odd number of A's
+AnBAn	A^n B A^n
+A2nBn	A^2n B^n
+ABnBn	(AB)^n B^n
+
+AnBnCm	A^n B^n C^m
+AnpmBnCm	A^(n+m) B^n C^m
+AnBnmm	A^n B^(n-m) - that is, n A's followed by k B's, with k < n
+AnBnUBnAn	A^n B^n | B^n A^n
+XAX	Two copies of the same string, separated by an A
+
+XAXBX	Three copies of the same string, separated by an A and a B
+A2n	An even-length string of A's
+AnBnp1	A^n B^(n+1)
+Count2Sep	Any prefix of [A, AA, AAA, AAAA, ...], delimited by pairs of B's
+abnAB	(AB)^n followed by any string
+
+
