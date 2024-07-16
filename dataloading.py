@@ -49,6 +49,9 @@ class Dataset:
         self.test = None
 
     def prepare_input(self, batch):
+
+        if batch is None:
+            return None
         
         # Keys in the batch that can be converted into tensors
         tensorizable_keys = ["input_ids", "labels", "attention_mask", "test_input_ids", "test_labels", "test_attention_mask"]
@@ -585,6 +588,8 @@ class MetaLMDataSplit(DataSplit):
 
         self.prepare_input = prepare_input
 
+        self.skip = False
+
     def __len__(self):
         return self.length
 
@@ -594,7 +599,9 @@ class MetaLMDataSplit(DataSplit):
             # We've used the whole dataset
             raise StopIteration
 
-        if self.remember_languages:
+        if self.skip:
+            to_return = None
+        elif self.remember_languages:
             to_return = self.tokenize(self.create_dataset(self.current_index, remembered_languages=self.remembered_languages))
         else:
             to_return = self.tokenize(self.create_dataset(self.current_index))
