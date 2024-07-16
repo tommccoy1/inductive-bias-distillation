@@ -31,7 +31,7 @@ class Trainer:
 
     def __init__(self, model=None, train_datasplit=None, eval_datasplit=None,
             max_grad_norm=1.0, n_epochs=None, patience=None, lr_decay_patience=1, weight_decay=0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-8, learning_rate=5e-5, 
-            lr_scheduler_type="linear", warmup_steps=0, eval_every=None, log_every=None, tokenizer=None):
+            lr_scheduler_type="linear", warmup_steps=0, eval_every=None, log_every=None, tokenizer=None): 
 
         # Model attributes
         self.model = model
@@ -87,7 +87,10 @@ class Trainer:
                     "eps": self.adam_epsilon,
                     "lr": self.learning_rate,
                 }
+       
+        sys.setrecursionlimit(10000)
         self.optimizer = torch.optim.AdamW(optimizer_grouped_parameters, **optimizer_kwargs)
+        sys.setrecursionlimit(100)
         
         self.lr_scheduler = get_scheduler(
                 self.lr_scheduler_type,
@@ -177,7 +180,6 @@ class Trainer:
 
         self.model.train()
 
-        tr_loss = 0
         self.model.zero_grad()
 
         total_updates = 0
@@ -194,6 +196,7 @@ class Trainer:
                 break
 
             for batch_index, batch in enumerate(self.train_datasplit):
+
                 if total_updates % self.eval_every == 0:
                     self.evaluate(save=True)
 
@@ -204,7 +207,7 @@ class Trainer:
                 if total_updates % self.log_every == 0:
                     logging.info("Training step " + str(total_updates) + " out of " + str(max_steps) + "; Epoch " + str(epoch) + "; Learning rate: " + str(self.lr_scheduler.get_last_lr()[0]))
 
-                tr_loss += self.training_step(self.model, batch)
+                tr_loss = self.training_step(self.model, batch)
 
                 if self.max_grad_norm is not None and self.max_grad_norm > 0:
 
@@ -226,7 +229,7 @@ class Trainer:
 
 class MetaTrainer(Trainer):
 
-    def __init__(self, inner_lr=1e-1, multi_step_loss=False, **kwargs):
+    def __init__(self, inner_lr=1e-1, multi_step_loss=False, multi_step_loss_eval=False, **kwargs):
         super(MetaTrainer, self).__init__(**kwargs)
 
         self.inner_lr = inner_lr
@@ -237,6 +240,7 @@ class MetaTrainer(Trainer):
         sys.setrecursionlimit(tmp_recursion_limit)
 
         self.multi_step_loss = multi_step_loss
+        self.multi_step_loss_eval = multi_step_loss_eval
 
 
     def training_step(self, model, inputs):
@@ -287,6 +291,8 @@ class MetaTrainer(Trainer):
             fmodel = copy.deepcopy(model)
             diffopt = torch.optim.SGD(fmodel.parameters(), lr=self.inner_lr)
 
+            outer_loss = 0
+
             # Train on the training set for this episode
             for mini_batch in inputs["train_batches"]:
 
@@ -295,8 +301,12 @@ class MetaTrainer(Trainer):
                 diffopt.step()
                 fmodel.zero_grad()
 
-            # Evaluate on the test set for this episode
-            outer_loss = fmodel(test)["loss"].detach()
+                if self.multi_step_loss_eval:
+                    outer_loss += fmodel(test)["loss"].detach()
+
+            if not self.multi_step_loss_eval:
+                # Evaluate on the test set for this episode
+                outer_loss = fmodel(test)["loss"].detach()
 
             # Print sequences sampled from the trained model
             # This is intended only for use in the quickstart example
@@ -369,7 +379,7 @@ class PseudoMetaTrainer(MetaTrainer):
 
 
 # Train simply on a single task within a meta dataset
-def simple_train_model(model, dataset, sgd_lr=None, adam_lr=5e-4, sgd_epochs=1, adam_epochs=100, return_last=False, full_dataset=None):
+def simple_train_model(model, dataset, sgd_lr=None, adam_lr=5e-4, sgd_epochs=1, adam_epochs=100, return_last=False, full_dataset=None, prnt=True):
 
     if hasattr(model, "rnn"):
         model.rnn.flatten_parameters()
@@ -392,7 +402,8 @@ def simple_train_model(model, dataset, sgd_lr=None, adam_lr=5e-4, sgd_epochs=1, 
         if not return_last:
             model.eval()
             valid_loss = model(test_set)["loss"]
-            logging.info("LOSS, PERPLEXITY: " + str(valid_loss.item()) + " " + str(torch.exp(valid_loss).item()))
+            if prnt:
+                logging.info("LOSS, PERPLEXITY: " + str(valid_loss.item()) + " " + str(torch.exp(valid_loss).item()))
             model.train()
 
             if valid_loss >= best_loss:
@@ -418,13 +429,15 @@ def simple_train_model(model, dataset, sgd_lr=None, adam_lr=5e-4, sgd_epochs=1, 
     if hasattr(model_to_return, "rnn"):
         model_to_return.rnn.flatten_parameters()
 
-    logging.info("DONE TRAINING")
+    if prnt:
+        logging.info("DONE TRAINING")
 
     if return_last:
         train_loss = 0
         for mini_batch in dataset["train_batches"]:
             train_loss += model_to_return(mini_batch)["loss"].item()
-        logging.info("TRAINING SET LOSS: " + str(train_loss))
+        if prnt:
+            logging.info("TRAINING SET LOSS: " + str(train_loss))
 
     return model_to_return
 

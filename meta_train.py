@@ -73,11 +73,6 @@ parser.add_argument("--pseudo", help="do pre-training (pseudo meta-training) ins
 parser.add_argument("--model_name", help="Model name prefix", type=str, default=None)
 parser.add_argument("--weight_dir", help="Directory to save model weights in", type=str, default=config.WEIGHT_DIR)
 parser.add_argument("--log_dir", help="Directory to save logs in", type=str, default=config.LOG_DIR)
-parser.add_argument("--save_optimizer_scheduler", help="Save the optimizer and learning rate scheduler", action='store_true')
-parser.add_argument("--load_saved", help="Load saved weights, optimizer, and checkpoint", action='store_true')
-parser.add_argument("--start_epoch", help="Epoch to start with after reloading", type=int, default=0)
-parser.add_argument("--start_batch_index", help="Batch index to start with after reloading", type=int, default=0)
-parser.add_argument("--start_total_updates", help="Total updates to start with after reloading", type=int, default=0)
 
 # Evaluation arguments
 parser.add_argument("--eval", help="Just evaluate, don't train", action='store_true')
@@ -115,15 +110,11 @@ if args.eval:
 else:
     model_name = args.model_name
 
-    if not args.load_saved:
-        model_index = 0
+    model_index = 0
+    args.model_name = model_name + "_" + str(model_index)
+    while args.model_name + ".log" in os.listdir(args.log_dir):
+        model_index += 1
         args.model_name = model_name + "_" + str(model_index)
-        while args.model_name + ".log" in os.listdir(args.log_dir):
-            model_index += 1
-            args.model_name = model_name + "_" + str(model_index)
-
-    else:
-        model_index = int(model_name.split("_")[-1])
 
 
     random.seed(model_index)
@@ -215,7 +206,6 @@ if args.pseudo:
             inner_lr=args.inner_lr,
             multi_step_loss=args.multi_step_loss,
             multi_step_loss_eval=args.multi_step_loss_eval,
-            save_optimizer_scheduler=args.save_optimizer_scheduler,
             )
 else:
     trainer = MetaTrainer(
@@ -235,32 +225,11 @@ else:
             inner_lr=args.inner_lr,
             multi_step_loss=args.multi_step_loss,
             multi_step_loss_eval=args.multi_step_loss_eval,
-            save_optimizer_scheduler=args.save_optimizer_scheduler,
             )
 
 
-if args.load_saved:
-    trainer.model.load()
-    trainer.create_optimizer_and_scheduler(num_training_steps=args.n_epochs*len(meta_dataset.train))
-
-    trainer.start_epoch = args.start_epoch
-    trainer.start_batch_index = args.start_batch_index
-    trainer.start_total_updates = args.start_total_updates
-
-    trainer.optimizer.load_state_dict(torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".optimizer"))
-    trainer.lr_scheduler.load_state_dict(torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".lr_scheduler"))
-
-
-    rng_state_dict = torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".rng")
-    torch.set_rng_state(rng_state_dict["cpu_rng_state"])
-
-    if torch.cuda.is_available():
-        torch.cuda.set_rng_state(rng_state_dict["gpu_rng_state"])
-
-    logging.info("Weights loaded")
-
 if not args.eval: 
-    trainer.train(new_optimizer=(not args.load_saved))
+    trainer.train()
 
 if not args.model_name.startswith("random"):
     trainer.model.load()
