@@ -3,6 +3,7 @@ import statistics
 import math
 
 def get_average_fscore(filename):
+    fscore = None
     for line in open(filename, "r"):
         if "Average LM Y&P F-score:" in line:
             parts = line.strip().split()
@@ -139,7 +140,8 @@ for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", 
     for language in fscores_by_language:
         fscores = []
         for index in range(40):
-            fscores.append(fscore_list[index][language])
+            if language in fscore_list[index]:
+                fscores.append(fscore_list[index][language])
         fscores_overall[train_size][language] = statistics.mean(fscores)
 
 
@@ -154,7 +156,7 @@ print("")
 print("Standard")
 fscores_overall = {}
 
-for train_size, topp in [("1", "1.0"), ("10", "0.99"), ("100", "0.99"), ("1000", "0.99"), ("10000", "0.99")]:
+for train_size, topp in [("1", "0.99"), ("10", "0.99"), ("100", "0.99"), ("1000", "0.99"), ("10000", "0.99")]:
     fscores_overall[train_size] = {}
     fscore_list = []
     for index in range(40):
@@ -165,14 +167,16 @@ for train_size, topp in [("1", "1.0"), ("10", "0.99"), ("100", "0.99"), ("1000",
     for language in fscores_by_language:
         fscores = []
         for index in range(40):
-            fscores.append(fscore_list[index][language])
+            if language in fscore_list[index]:
+                fscores.append(fscore_list[index][language])
         fscores_overall[train_size][language] = statistics.mean(fscores)
 
 
 prior_scores = []
 for train_size in train_sizes:
     for language in all_languages:
-        prior_scores.append(fscores_overall[train_size][language])
+        if language in fscores_overall[train_size]:
+            prior_scores.append(fscores_overall[train_size][language])
 print(prior_scores)
 
 print("")
@@ -194,7 +198,8 @@ for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", 
     for language in fscores_by_language:
         fscores = []
         for index in range(40):
-            fscores.append(fscore_list[index][language])
+            if language in fscore_list[index]:
+                fscores.append(fscore_list[index][language])
         fscores_overall[train_size][language] = statistics.mean(fscores)
 
 
