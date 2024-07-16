@@ -264,9 +264,9 @@ def formal_dataset(list_of_langs, training_size=100, test_size=10, batch_size=10
 
 
 # Dataset produced from our version of a synchronized CFG meta-grammar
-def scfg_dataset(n_test=10, batch_size=100, eval_batch_size=10, max_batches_per_language=1, withheld_languages=None, withheld_seq_dict=None, allow_synchrony=True, allow_recursion=True, just_terminal=False, no_seq=False, no_concat=False):
+def scfg_dataset(n_test=10, batch_size=100, eval_batch_size=10, max_batches_per_language=1, withheld_languages=None, withheld_seq_dict=None, allow_synchrony=True, allow_recursion=True):
 
-    def create_scfg_dataset(seed, max_batches_per_language=max_batches_per_language, remembered_languages=None, allow_synchrony=allow_synchrony, allow_recursion=allow_recursion, just_terminal=just_terminal, no_seq=no_seq, no_concat=no_concat):
+    def create_scfg_dataset(seed, max_batches_per_language=max_batches_per_language, remembered_languages=None, allow_synchrony=allow_synchrony, allow_recursion=allow_recursion):
         
         # Use a seed for reproducibility
         random.seed(seed)
@@ -292,7 +292,7 @@ def scfg_dataset(n_test=10, batch_size=100, eval_batch_size=10, max_batches_per_
                     try:
                         # Attempt to generate a grammar for this language
                         sys.setrecursionlimit(40)
-                        hyp = random_sync(allow_synchrony=allow_synchrony, allow_recursion=allow_recursion, just_terminal=just_terminal, no_seq=no_seq, no_concat=no_concat)
+                        hyp = random_sync(allow_synchrony=allow_synchrony, allow_recursion=allow_recursion)
                         sys.setrecursionlimit(1000)
                     except:
                         # Failed to generate a grammar

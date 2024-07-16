@@ -64,15 +64,19 @@ def counts_from_sync_pattern(sync_pattern):
     return counts
 
 class SyncGrammar:
-    def __init__(self):
+    def __init__(self, allow_recursion=True):
         self.rules = {}
         self.weights = {}
 
         self.string2primitive = {}
 
         # basic_primitives is defined near the bottom of the file
-        for primitive, weight in basic_primitives:
-            self.add(primitive, weight)
+        if allow_recursion:
+            for primitive, weight in basic_primitives:
+                self.add(primitive, weight)
+        else:
+            for primitive, weight in basic_primitives_no_recursion:
+                self.add(primitive, weight)
 
         self.init_probs()
 
@@ -404,9 +408,9 @@ def insert_into_pattern(string_list, sync_pattern):
 
 
 class SyncHypothesis:
-    def __init__(self, input_nested_list=None, vocab=None, sync_pattern=None):
+    def __init__(self, input_nested_list=None, vocab=None, sync_pattern=None, allow_recursion=True):
         
-        self.grammar = SyncGrammar()
+        self.grammar = SyncGrammar(allow_recursion=allow_recursion)
 
         self.init_vocab(vocab=vocab)
     
@@ -494,8 +498,11 @@ class SyncHypothesis:
 
 
 
-def random_sync():
-    hyp = SyncHypothesis()
+def random_sync(allow_synchrony=True, allow_recursion=True):
+    if allow_synchrony:
+        hyp = SyncHypothesis(allow_recursion=allow_recursion)
+    else:
+        hyp = SyncHypothesis(sync_pattern=[0], allow_recursion=allow_recursion)
     return hyp
 
 
@@ -529,11 +536,12 @@ star = SyncPrimitive(special_type="STAR", output_type="L", name="STAR")
 concat = SyncPrimitive(special_type="CONCAT", output_type="L", name="CONCAT", weight=concat_w)
 
 basic_primitives = [(terminal_top, terminal_top_w), (aorb_top, aorb_top_w), (plus_top, plus_top_w), (concat_top, concat_top_w), (terminal, terminal_w), (aorb, aorb_w), (plus, plus_w), (concat, concat_w)]
-
+basic_primitives_no_recursion = [(terminal_top, terminal_top_w), (aorb_top, aorb_top_w), (concat_top, concat_top_w), (terminal, terminal_w), (aorb, aorb_w), (concat, concat_w)]
 
 if __name__ == "__main__":
     for _ in range(5):
-        hyp = random_sync()
+        hyp = random_sync(allow_recursion=True, allow_synchrony=True)
+        #hyp = random_sync()
         hyp.pretty_print()
         for _ in range(5):
             print(hyp.to_call([]))
