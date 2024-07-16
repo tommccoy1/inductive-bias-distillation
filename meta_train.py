@@ -40,7 +40,7 @@ parser.add_argument("--max_batches_per_language", help="Max number of training b
 parser.add_argument("--meta_train_size", help="Training sequences per episode of a meta dataset; only used when evaluating with formal languages", type=int, default=10)
 parser.add_argument("--meta_test_size", help="Evaluation sequences per episode of meta training", type=int, default=10)
 
-parser.add_argument("--dataset", help="Data to meta-train on. Options: simple, yp, scfg, formal", type=str, default="simple")
+parser.add_argument("--dataset", help="Data to meta-train on. Options: simple, yp, scfg, formal, scfg_no_sync, scfg_no_recursion", type=str, default="simple")
 parser.add_argument("--yandp_param_file", help="File with production weights for the Yang & Piantadosi model", type=str, default=None)
 parser.add_argument("--formal_train_size", help="Training size for using the formal languages as an evaluation set", type=int, default=100)
 parser.add_argument("--formal_test_size", help="Test size for using the formal languages as an evaluation set", type=int, default=10)
@@ -66,12 +66,18 @@ parser.add_argument("--warmup_proportion", help="Proportion of total steps that 
 parser.add_argument("--patience", help="Patience", type=int, default=None)
 parser.add_argument("--lr_decay_patience", help="Learning rate decay paatience", type=int, default=None)
 parser.add_argument("--multi_step_loss", help="use multi-step loss", action='store_true')
+parser.add_argument("--multi_step_loss_eval", help="use multi-step loss when evaluating", action='store_true')
 parser.add_argument("--pseudo", help="do pre-training (pseudo meta-training) instead of true meta-training", action='store_true')
 
 # Saving arguments
 parser.add_argument("--model_name", help="Model name prefix", type=str, default=None)
 parser.add_argument("--weight_dir", help="Directory to save model weights in", type=str, default=config.WEIGHT_DIR)
 parser.add_argument("--log_dir", help="Directory to save logs in", type=str, default=config.LOG_DIR)
+parser.add_argument("--save_optimizer_scheduler", help="Save the optimizer and learning rate scheduler", action='store_true')
+parser.add_argument("--load_saved", help="Load saved weights, optimizer, and checkpoint", action='store_true')
+parser.add_argument("--start_epoch", help="Epoch to start with after reloading", type=int, default=0)
+parser.add_argument("--start_batch_index", help="Batch index to start with after reloading", type=int, default=0)
+parser.add_argument("--start_total_updates", help="Total updates to start with after reloading", type=int, default=0)
 
 # Evaluation arguments
 parser.add_argument("--eval", help="Just evaluate, don't train", action='store_true')
@@ -108,23 +114,29 @@ if args.eval:
         log_file_name = args.model_name + args.eval_suffix + "_eval"
 else:
     model_name = args.model_name
-    model_index = 0
-    args.model_name = model_name + "_" + str(model_index)
-    while args.model_name + ".log" in os.listdir(args.log_dir):
-        model_index += 1
-        args.model_name = model_name + "_" + str(model_index)
 
-    log_file_name = args.model_name
+    if not args.load_saved:
+        model_index = 0
+        args.model_name = model_name + "_" + str(model_index)
+        while args.model_name + ".log" in os.listdir(args.log_dir):
+            model_index += 1
+            args.model_name = model_name + "_" + str(model_index)
+
+    else:
+        model_index = int(model_name.split("_")[-1])
+
 
     random.seed(model_index)
     np.random.seed(model_index)
     torch.manual_seed(model_index)
+    
+    log_file_name = args.model_name
+
 
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, handlers=[logging.StreamHandler(),logging.FileHandler(args.log_dir + log_file_name + ".log")])
 
 
 logging.info(args)
-
 
 ################################################################################################
 # Set up the data
@@ -143,6 +155,12 @@ elif args.dataset == "yandp":
     integer_vocab_size = 10
 elif args.dataset == "scfg":
     create_dataset = scfg_dataset(n_test=args.meta_test_size, batch_size=args.meta_train_batch_size, eval_batch_size=args.meta_eval_batch_size, max_batches_per_language=args.max_batches_per_language, withheld_languages=withheld_languages, withheld_seq_dict=withheld_seq_dict)
+    integer_vocab_size = 10
+elif args.dataset == "scfg_no_sync":
+    create_dataset = scfg_dataset(n_test=args.meta_test_size, batch_size=args.meta_train_batch_size, eval_batch_size=args.meta_eval_batch_size, max_batches_per_language=args.max_batches_per_language, withheld_languages=withheld_languages, withheld_seq_dict=withheld_seq_dict, allow_synchrony=False)
+    integer_vocab_size = 10
+elif args.dataset == "scfg_no_recursion":
+    create_dataset = scfg_dataset(n_test=args.meta_test_size, batch_size=args.meta_train_batch_size, eval_batch_size=args.meta_eval_batch_size, max_batches_per_language=args.max_batches_per_language, withheld_languages=withheld_languages, withheld_seq_dict=withheld_seq_dict, allow_recursion=False)
     integer_vocab_size = 10
 elif args.dataset == "formal":
     create_dataset = formal_dataset(args.language_list, training_size=args.meta_train_size, test_size=args.meta_test_size, batch_size=args.meta_train_batch_size, eval_batch_size=args.meta_eval_batch_size, max_batches_per_language=args.max_batches_per_language)
@@ -196,6 +214,8 @@ if args.pseudo:
             tokenizer=meta_dataset.tokenizer,
             inner_lr=args.inner_lr,
             multi_step_loss=args.multi_step_loss,
+            multi_step_loss_eval=args.multi_step_loss_eval,
+            save_optimizer_scheduler=args.save_optimizer_scheduler,
             )
 else:
     trainer = MetaTrainer(
@@ -214,10 +234,33 @@ else:
             tokenizer=meta_dataset.tokenizer,
             inner_lr=args.inner_lr,
             multi_step_loss=args.multi_step_loss,
+            multi_step_loss_eval=args.multi_step_loss_eval,
+            save_optimizer_scheduler=args.save_optimizer_scheduler,
             )
 
+
+if args.load_saved:
+    trainer.model.load()
+    trainer.create_optimizer_and_scheduler(num_training_steps=args.n_epochs*len(meta_dataset.train))
+
+    trainer.start_epoch = args.start_epoch
+    trainer.start_batch_index = args.start_batch_index
+    trainer.start_total_updates = args.start_total_updates
+
+    trainer.optimizer.load_state_dict(torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".optimizer"))
+    trainer.lr_scheduler.load_state_dict(torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".lr_scheduler"))
+
+
+    rng_state_dict = torch.load(os.path.join(trainer.model.save_dir, trainer.model.name) + ".rng")
+    torch.set_rng_state(rng_state_dict["cpu_rng_state"])
+
+    if torch.cuda.is_available():
+        torch.cuda.set_rng_state(rng_state_dict["gpu_rng_state"])
+
+    logging.info("Weights loaded")
+
 if not args.eval: 
-    trainer.train()
+    trainer.train(new_optimizer=(not args.load_saved))
 
 if not args.model_name.startswith("random"):
     trainer.model.load()
@@ -245,8 +288,6 @@ if args.eval_generate:
 if args.eval_formal:
 
     eval_formal(trainer.model, args.language_list, formal_train_size=args.formal_train_size, formal_test_size=args.formal_test_size, meta_train_batch_size=args.meta_train_batch_size, n_positions=args.n_positions, top_p=args.top_p, hot_temperature=args.hot_temperature, cold_temperature=args.cold_temperature, prec_rec_n_samples=args.prec_rec_n_samples, inner_lr=args.inner_lr, adam_lr=args.adam_lr, sgd_epochs=args.sgd_epochs, adam_epochs=args.adam_epochs, return_last=args.return_last, integer_vocab_size=integer_vocab_size, tokenizer=meta_dataset.tokenizer)
-
-
 
 
 
