@@ -1,0 +1,25 @@
+2024-03-30 03:28:21,674 INFO     Namespace(directory='CHILDES/pretraining_full_18/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/meta_lm_no_sync_hidden1024_18', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='adapt_no_sync_hidden1024_18_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_priming=True, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='priming')
+2024-03-30 03:28:38,868 INFO     Vocab size: 17096
+2024-03-30 03:28:39,134 INFO     Model size: 16.8M parameters
+2024-03-30 03:28:50,276 INFO     Loading model checkpoint from weights/meta_lm_no_sync_hidden1024_18
+2024-03-30 03:28:50,645 INFO     Loading model checkpoint from weights/adapt_no_sync_hidden1024_18_0
+2024-03-30 03:28:56,626 INFO     priming_long AVG SINGLE NEGATIVE LOGPROB: 5.459
+2024-03-30 03:28:56,626 INFO     priming_long AVG DOUBLE NEGATIVE LOGPROB: 4.734
+2024-03-30 03:28:56,626 INFO     priming_long AVG SINGLE PERPLEXITY: 264.182
+2024-03-30 03:28:56,626 INFO     priming_long AVG DOUBLE PERPLEXITY: 127.925
+2024-03-30 03:29:02,397 INFO     priming_long_implausible AVG SINGLE NEGATIVE LOGPROB: 5.766
+2024-03-30 03:29:02,398 INFO     priming_long_implausible AVG DOUBLE NEGATIVE LOGPROB: 5.076
+2024-03-30 03:29:02,398 INFO     priming_long_implausible AVG SINGLE PERPLEXITY: 347.296
+2024-03-30 03:29:02,398 INFO     priming_long_implausible AVG DOUBLE PERPLEXITY: 174.433
+2024-03-30 03:29:05,962 INFO     priming_short AVG SINGLE NEGATIVE LOGPROB: 5.682
+2024-03-30 03:29:05,962 INFO     priming_short AVG DOUBLE NEGATIVE LOGPROB: 4.472
+2024-03-30 03:29:05,962 INFO     priming_short AVG SINGLE PERPLEXITY: 372.995
+2024-03-30 03:29:05,962 INFO     priming_short AVG DOUBLE PERPLEXITY: 111.475
+2024-03-30 03:29:09,671 INFO     priming_short_implausible AVG SINGLE NEGATIVE LOGPROB: 5.962
+2024-03-30 03:29:09,671 INFO     priming_short_implausible AVG DOUBLE NEGATIVE LOGPROB: 4.838
+2024-03-30 03:29:09,671 INFO     priming_short_implausible AVG SINGLE PERPLEXITY: 473.706
+2024-03-30 03:29:09,671 INFO     priming_short_implausible AVG DOUBLE PERPLEXITY: 153.576
+2024-03-30 03:29:16,326 INFO     Validation loss: 3.0680410046876205
+2024-03-30 03:29:16,326 INFO     Validation perplexity: 21.499743496941175
+2024-03-30 03:29:29,368 INFO     Validation (strided) loss: 3.0373517187090346
+2024-03-30 03:29:29,368 INFO     Validation (strided) perplexity: 20.849953514230894
