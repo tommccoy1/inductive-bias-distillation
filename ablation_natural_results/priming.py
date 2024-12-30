@@ -110,19 +110,19 @@ for category in nopre_values:
         print("Yespre        ", statistics.mean(yespre_values[category]))
         print("Yespre no sync", statistics.mean(yespre_nosync_values[category]))
         print("Yespre no rec ", statistics.mean(yespre_norec_values[category]))
-        print("Pvalue (yes/no)", scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])).pvalue)
-        print("Pvalue (yes/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(yespre_values[category])).pvalue)
-        print("Pvalue (yes/yes no rec)", scipy.stats.ttest_ind(a=np.array(yespre_norec_values[category]), b=np.array(yespre_values[category])).pvalue)
-        print("Pvalue (no/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(nopre_values[category])).pvalue)
-        print("Pvalue (no/yes no rec)", scipy.stats.ttest_ind(a=np.array(yespre_norec_values[category]), b=np.array(nopre_values[category])).pvalue)
-        print("Pvalue (yes no rec/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(yespre_norec_values[category])).pvalue)
+        print("Pvalue (yes/no)", scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue)
+        print("Pvalue (yes/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue)
+        print("Pvalue (yes/yes no rec)", scipy.stats.ttest_ind(a=np.array(yespre_norec_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue)
+        print("Pvalue (no/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(nopre_values[category]), equal_var=False).pvalue)
+        print("Pvalue (no/yes no rec)", scipy.stats.ttest_ind(a=np.array(yespre_norec_values[category]), b=np.array(nopre_values[category]), equal_var=False).pvalue)
+        print("Pvalue (yes no rec/yes no sync)", scipy.stats.ttest_ind(a=np.array(yespre_nosync_values[category]), b=np.array(yespre_norec_values[category]), equal_var=False).pvalue)
         print("")
 
     if category != "overall":
         total += 1
         yes_mean = statistics.mean(yespre_values[category])
         no_mean = statistics.mean(nopre_values[category])
-        pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])).pvalue
+        pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue
 
         if yes_mean < no_mean:
             yes_better += 1
