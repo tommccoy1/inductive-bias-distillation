@@ -74,6 +74,7 @@ for pre in ["nopre", "yespre"]:
                     yespre_values[name].append(acc)
 
 
+
 total_scores_yes = []
 total_scores_no = []
 
@@ -98,9 +99,11 @@ for index in range(n_runs):
     total_scores_yes.append(total_score_yes*1.0/n_categories)
     total_scores_no.append(total_score_no*1.0/n_categories)
 
-
+print("No scores", total_scores_no)
+print("Yes scores", total_scores_yes)
+print("")
 print("Mean yes", statistics.mean(total_scores_yes))
 print("Mean no", statistics.mean(total_scores_no))
-print(scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes)))
-pvalue = scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes)).pvalue
+print(scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes), equal_var=False))
+pvalue = scipy.stats.ttest_ind(a=np.array(total_scores_no), b=np.array(total_scores_yes), equal_var=False).pvalue
 print("P-value", pvalue)

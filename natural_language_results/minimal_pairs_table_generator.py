@@ -128,7 +128,7 @@ for category in nopre_values:
 
     yes_mean = statistics.mean(yespre_values[category])
     no_mean = statistics.mean(nopre_values[category])
-    pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])).pvalue
+    pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue
    
     yes_conf = confidence_interval(yespre_values[category])
     no_conf = confidence_interval(nopre_values[category])
