@@ -35,10 +35,12 @@ def compute_seconds(time1, time2):
 min_time = math.inf
 max_time = -1*math.inf
 
+total_count = 0
 for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", "0.99"), ("10000", "0.99")]:
     for index in range(40):
         fi = open("prior_trained/meta_lm_hidden1024_" + str(index) + "_eval_formal_" + train_size + "_language_list_topp" + topp + "_nsamples1000000_for_paper.log", "r")
 
+        inner_count = 0
         for line in fi:
             if "Description" in line:
                 parts = line.strip().split()
@@ -53,6 +55,14 @@ for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", 
                     min_time = time
                 if time > max_time:
                     max_time = time
+                total_count += 1
+                inner_count += 1
+        if inner_count != 56:
+            print("prior_trained/meta_lm_hidden1024_" + str(index) + "_eval_formal_" + train_size + "_language_list_topp" + topp + "_nsamples1000000_for_paper.log")
+            print(inner_count)
+            print("")
+
+print("Total count:", total_count, 40*56*5)
 
 print("Minimum:", min_time)
 print("Maximum:", max_time)
