@@ -3,16 +3,14 @@ import statistics
 import math
 
 def get_average_fscore(filename):
-    fscore = None
     for line in open(filename, "r"):
         if "Average LM Y&P F-score:" in line:
             parts = line.strip().split()
             fscore = float(parts[-1])
-
+    
     return fscore
 
 def get_average_memorization_fscore(filename):
-    fscore = None
     for line in open(filename, "r"):
         if "Average memorization Y&P F-score:" in line:
             parts = line.strip().split()
@@ -89,10 +87,12 @@ for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", 
     for index in range(40):
         fi = "prior_trained/meta_lm_hidden1024_" + str(index) + "_eval_formal_" + train_size + "_language_list_topp" + topp + "_nsamples1000000_for_paper.log"
         fscore = get_average_fscore(fi)
-        if fscore is not None:
-            fscores[train_size].append(fscore)
+        fscores[train_size].append(fscore)
 
 for train_size in train_sizes:
+    if len(fscores[train_size]) != 40:
+        print("Prior trained", train_size, len(fscores[train_size]), 40)
+        15/0
     print(train_size, statistics.mean(fscores[train_size]), min(fscores[train_size]), max(fscores[train_size]))
     #print(statistics.stdev(fscores[train_size]))
     #print(sorted(fscores[train_size]))
@@ -108,10 +108,13 @@ for train_size, topp in [("1", "0.99"), ("10", "0.99"), ("100", "0.99"), ("1000"
     for index in range(40):
         fi = "standard/random_meta_lm_hidden1024_" + str(index) + "_eval_formal_" + train_size + "_language_list_topp" + topp + "_nsamples1000000_for_paper.log"
         fscore = get_average_fscore(fi)
-        if fscore is not None:
-            fscores[train_size].append(fscore)
+        fscores[train_size].append(fscore)
 
 for train_size in train_sizes:
+    if len(fscores[train_size]) != 40:
+        print("Standard", train_size, len(fscores[train_size]), 40)
+        15/0
+
     print(train_size, statistics.mean(fscores[train_size]), min(fscores[train_size]), max(fscores[train_size]))
 
 print("")
@@ -126,11 +129,14 @@ for train_size, topp in [("1", "1.0"), ("10", "1.0"), ("100", "0.99"), ("1000", 
     for index in range(40):
         fi = "prior_trained/meta_lm_hidden1024_" + str(index) + "_eval_formal_" + train_size + "_language_list_topp" + topp + "_nsamples1000000_for_paper.log"
         fscore = get_average_memorization_fscore(fi)
-        if fscore is not None:
-            fscores[train_size].append(fscore)
+        fscores[train_size].append(fscore)
 
 for train_size in train_sizes:
-    print(train_size, statistics.mean(fscores[train_size]))
+    if len(fscores[train_size]) != 40:
+        print("Memorization", train_size, len(fscores[train_size]), 40)
+        15/0
+
+    print(train_size, statistics.mean(fscores[train_size]), min(fscores[train_size]), max(fscores[train_size]))
 
 print("")
 
@@ -149,6 +155,10 @@ for train_size, topp in [("1", "1.0"), ("10", "0.99"), ("100", "0.99"), ("1000",
         fscores[train_size].append(fscore)
 
 for train_size in train_sizes:
+    if len(fscores[train_size]) != 40:
+        print("Pre-trained", train_size, len(fscores[train_size]), 40)
+        15/0
+
     print(train_size, statistics.mean(fscores[train_size]), min(fscores[train_size]), max(fscores[train_size]))
 
 print("")
