@@ -101,7 +101,7 @@ for implausible in [True, False]:
             total += 1
             yes_mean = statistics.mean(yespre_values[category])
             no_mean = statistics.mean(nopre_values[category])
-            pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])).pvalue
+            pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue
 
             #print("Yes values", sorted(yespre_values[category]))
             #print("No values", sorted(nopre_values[category]))

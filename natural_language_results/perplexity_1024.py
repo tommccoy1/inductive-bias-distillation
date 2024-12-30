@@ -60,7 +60,7 @@ for model_size in ["1024"]:
 
 
         print(round((no_mean - yes_mean) / no_mean, 3))
-        print(scipy.stats.ttest_ind(a=np.array(yes_values), b=np.array(no_values)))
+        print(scipy.stats.ttest_ind(a=np.array(yes_values), b=np.array(no_values), equal_var=False))
 
         print("")
 

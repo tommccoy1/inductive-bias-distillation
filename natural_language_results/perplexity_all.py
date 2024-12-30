@@ -2,8 +2,7 @@
 import statistics
 import os
 
-directory = "/scratch/gpfs/tm4633/inductive_bias_distillation/logs/"
-weight_directory = "/scratch/gpfs/tm4633/inductive_bias_distillation/weights/"
+directory = "perplexity/"
 
 import numpy as np
 import scipy.stats
@@ -58,7 +57,7 @@ for model_size in ["16", "32", "64", "128", "256", "512", "1024"]:
 
 
         print(round((no_mean - yes_mean) / no_mean, 3))
-        print(scipy.stats.ttest_ind(a=np.array(yes_values), b=np.array(no_values)))
+        print(scipy.stats.ttest_ind(a=np.array(yes_values), b=np.array(no_values), equal_var=False))
 
         print("")
 
