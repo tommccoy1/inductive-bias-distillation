@@ -156,6 +156,7 @@ print("")
 print("Standard")
 fscores_overall = {}
 
+all_languages = fscores_by_language.keys()
 for train_size, topp in [("1", "0.99"), ("10", "0.99"), ("100", "0.99"), ("1000", "0.99"), ("10000", "0.99")]:
     fscores_overall[train_size] = {}
     fscore_list = []
@@ -164,7 +165,7 @@ for train_size, topp in [("1", "0.99"), ("10", "0.99"), ("100", "0.99"), ("1000"
         fscores_by_language = get_fscore_by_language(fi)
         fscore_list.append(fscores_by_language)
 
-    for language in fscores_by_language:
+    for language in all_languages:
         fscores = []
         for index in range(40):
             if language in fscore_list[index]:
