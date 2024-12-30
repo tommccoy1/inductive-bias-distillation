@@ -139,9 +139,9 @@ for implausible in [True, False]:
             yes_nosync_mean = statistics.mean(yespre_nosync_values[category])
             yes_norec_mean = statistics.mean(yespre_norec_values[category])
 
-            pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category])).pvalue
-            pvalue_nosync = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_nosync_values[category])).pvalue
-            pvalue_norec = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_norec_values[category])).pvalue
+            pvalue = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_values[category]), equal_var=False).pvalue
+            pvalue_nosync = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_nosync_values[category]), equal_var=False).pvalue
+            pvalue_norec = scipy.stats.ttest_ind(a=np.array(nopre_values[category]), b=np.array(yespre_norec_values[category]), equal_var=False).pvalue
 
             #print("Yes values", sorted(yespre_values[category]))
             #print("No values", sorted(nopre_values[category]))
