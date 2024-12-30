@@ -10,6 +10,8 @@ def get_average_fscore(filename):
     try:
         for line in open(filename, "r"):
             if "Average LM Y&P F-score:" in line:
+                if fscore is not None:
+                    print(filename)
                 parts = line.strip().split()
                 fscore = float(parts[-1])
     except:
