@@ -196,7 +196,7 @@ def sample_generation(dataset, trainer, n_positions=100):
 # Minimal pair evals
 ################################################################################################
 
-def zorro_eval(model, dataset):
+def zorro_eval(model, dataset, save_name=None):
     zorro_categories = ["agreement_determiner_noun-across_1_adjective",
             "agreement_determiner_noun-between_neighbors",
             "agreement_subject_verb-across_prepositional_phrase",
@@ -225,6 +225,9 @@ def zorro_eval(model, dataset):
     total_correct = 0
     total_total = 0
 
+    if save_name is not None:
+        fo = open("item_level_results/" + save_name + "_zorro.txt", "w")
+
     for category in zorro_categories:
         fi = open("Zorro/sentences/babyberta/" + category + ".txt", "r")
 
@@ -242,6 +245,11 @@ def zorro_eval(model, dataset):
         for pair in pairs:
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tcorrect\n")
+            else:
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tincorrect\n")
 
             total += 1
 
@@ -251,6 +259,9 @@ def zorro_eval(model, dataset):
         logging.info("ZORRO MINIMAL PAIR RESULTS:" + category + " " + str(correct) + " " + str(total) + " " + str(correct*1.0/total))
 
     logging.info("ZORRO MINIMAL PAIR RESULTS: OVERALL: " + str(total_correct) + " " + str(total_total) + " " + str(total_correct*1.0/total_total))
+
+    if save_name is not None:
+        fo.close()
 
 
 
@@ -269,7 +280,7 @@ def blimp_postprocess(sentence):
     new_sentence = apostrophe_space(new_sentence)
     return new_sentence
 
-def blimp_eval(model, dataset):
+def blimp_eval(model, dataset, save_name=None):
     blimp_categories = ["adjunct_island",
                 "anaphor_gender_agreement", 
                 "anaphor_number_agreement", 
@@ -344,6 +355,9 @@ def blimp_eval(model, dataset):
     total_correct = 0
     total_total = 0
 
+    if save_name is not None:
+        fo = open("item_level_results/" + save_name + "_blimp.txt", "w")
+
     for category in blimp_categories:
         pairs = []
 
@@ -357,6 +371,11 @@ def blimp_eval(model, dataset):
         for pair in pairs:
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tcorrect\n")
+            else:
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tincorrect\n")
 
             total += 1
 
@@ -366,10 +385,12 @@ def blimp_eval(model, dataset):
         logging.info("BLIMP_CHILDES MINIMAL PAIR RESULTS:" + category + " " + str(correct) + " " + str(total) + " " + str(correct*1.0/total))
 
     logging.info("BLIMP_CHILDES MINIMAL PAIR RESULTS: OVERALL: " + str(total_correct) + " " + str(total_total) + " " + str(total_correct*1.0/total_total))
+    if save_name is not None:
+        fo.close()
 
 
 
-def scamp_eval(model, dataset, plausible=True):
+def scamp_eval(model, dataset, plausible=True, save_name=None):
     if plausible:
         categories = ["anaphor_gender_agreement", "anaphor_number_agreement", "matrix_question_npi_licensor_present", "npi_present", "only_npi_licensor_present", "sentential_negation_npi_licensor_present", "only_npi_scope", "sentential_negation_npi_scope", "intransitive", "transitive", "left_branch_island_simple_question", "coordinate_structure_constrain_object_extraction", "wh_island", "complex_np_island", "adjunct_island", "wh_vs_that_with_gap_long_distance", "wh_vs_that_with_gap", "wh_vs_that_no_gap_long_distance", "wh_vs_that_no_gap", "wh_questions_subject_gap_long_distance", "wh_questions_object_gap_long_distance", "wh_questions_subject_gap", "wh_questions_object_gap", "principle_A_domain_3", "principle_A_domain_2", "principle_A_domain_1", "principle_A_c_command", "subj_aux_vary_subj", "subj_aux_vary_verb", "subj_aux_vary_verb_rc", "subj_aux_vary_verb_pp", "subj_verb_vary_verb", "subj_aux_agreement_question_vary_subj", "subj_aux_agreement_question_vary_aux", "determiner_noun_agreement_1", "determiner_noun_agreement_adj_1", "determiner_noun_agreement_2", "determiner_noun_agreement_adj_2", "svo_vos", "green_ideas", "adv_order", "pp_order", "center_embedding_single_1", "center_embedding_single_2", "center_embedding_double_1", "center_embedding_double_2", "swapped_ditransitive_1", "swapped_ditransitive_2", "ellipsis", "recursion_intensifier_adj_short", "recursion_intensifier_adv_short", "recursion_pp_verb_short", "recursion_pp_is_short", "recursion_poss_transitive_short", "recursion_poss_ditransitive_short", "recursion_intensifier_adj_medium", "recursion_intensifier_adv_medium", "recursion_pp_verb_medium", "recursion_pp_is_medium", "recursion_poss_transitive_medium", "recursion_poss_ditransitive_medium", "recursion_intensifier_adj_long", "recursion_intensifier_adv_long", "recursion_pp_verb_long", "recursion_pp_is_long", "recursion_poss_transitive_long", "recursion_poss_ditransitive_long"]
     else:
@@ -379,6 +400,12 @@ def scamp_eval(model, dataset, plausible=True):
 
     total_correct = 0
     total_total = 0
+
+    if save_name is not None:
+        if plausible:
+            fo = open("item_level_results/" + save_name + "_scamp_plausible.txt", "w")
+        else:
+            fo = open("item_level_results/" + save_name + "_scamp_implausible.txt", "w")
 
     for category in categories:
         if plausible:
@@ -399,6 +426,11 @@ def scamp_eval(model, dataset, plausible=True):
         for pair in pairs:
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tcorrect\n")
+            else:
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tincorrect\n")
 
             total += 1
 
@@ -415,10 +447,13 @@ def scamp_eval(model, dataset, plausible=True):
     else:
         logging.info("SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS: OVERALL: " + str(total_correct) + " " + str(total_total) + " " + str(total_correct*1.0/total_total))
 
+    if save_name is not None:
+        fo.close()
 
 
 
-def recursion_eval(model, dataset):
+
+def recursion_eval(model, dataset, save_name=None):
     categories = ['recursion_intensifier_adj_0', 'recursion_intensifier_adj_1', 'recursion_intensifier_adj_2', 'recursion_intensifier_adj_3', 'recursion_intensifier_adj_4', 'recursion_intensifier_adj_5', 'recursion_intensifier_adj_6', 'recursion_intensifier_adj_7', 'recursion_intensifier_adj_8', 'recursion_intensifier_adj_9', 'recursion_intensifier_adj_10', 'recursion_intensifier_adv_0', 'recursion_intensifier_adv_1', 'recursion_intensifier_adv_2', 'recursion_intensifier_adv_3', 'recursion_intensifier_adv_4', 'recursion_intensifier_adv_5', 'recursion_intensifier_adv_6', 'recursion_intensifier_adv_7', 'recursion_intensifier_adv_8', 'recursion_intensifier_adv_9', 'recursion_intensifier_adv_10', 'recursion_pp_verb_0', 'recursion_pp_verb_1', 'recursion_pp_verb_2', 'recursion_pp_verb_3', 'recursion_pp_verb_4', 'recursion_pp_verb_5', 'recursion_pp_verb_6', 'recursion_pp_verb_7', 'recursion_pp_verb_8', 'recursion_pp_verb_9', 'recursion_pp_verb_10', 'recursion_pp_is_0', 'recursion_pp_is_1', 'recursion_pp_is_2', 'recursion_pp_is_3', 'recursion_pp_is_4', 'recursion_pp_is_5', 'recursion_pp_is_6', 'recursion_pp_is_7', 'recursion_pp_is_8', 'recursion_pp_is_9', 'recursion_pp_is_10', 'recursion_poss_transitive_0', 'recursion_poss_transitive_1', 'recursion_poss_transitive_2', 'recursion_poss_transitive_3', 'recursion_poss_transitive_4', 'recursion_poss_transitive_5', 'recursion_poss_transitive_6', 'recursion_poss_transitive_7', 'recursion_poss_transitive_8', 'recursion_poss_transitive_9', 'recursion_poss_transitive_10', 'recursion_poss_ditransitive_0', 'recursion_poss_ditransitive_1', 'recursion_poss_ditransitive_2', 'recursion_poss_ditransitive_3', 'recursion_poss_ditransitive_4', 'recursion_poss_ditransitive_5', 'recursion_poss_ditransitive_6', 'recursion_poss_ditransitive_7', 'recursion_poss_ditransitive_8', 'recursion_poss_ditransitive_9', 'recursion_poss_ditransitive_10', 
             'recursion_intensifier_adj_0_implausible', 'recursion_intensifier_adj_1_implausible', 'recursion_intensifier_adj_2_implausible', 'recursion_intensifier_adj_3_implausible', 'recursion_intensifier_adj_4_implausible', 'recursion_intensifier_adj_5_implausible', 'recursion_intensifier_adj_6_implausible', 'recursion_intensifier_adj_7_implausible', 'recursion_intensifier_adj_8_implausible', 'recursion_intensifier_adj_9_implausible', 'recursion_intensifier_adj_10_implausible', 'recursion_intensifier_adv_0_implausible', 'recursion_intensifier_adv_1_implausible', 'recursion_intensifier_adv_2_implausible', 'recursion_intensifier_adv_3_implausible', 'recursion_intensifier_adv_4_implausible', 'recursion_intensifier_adv_5_implausible', 'recursion_intensifier_adv_6_implausible', 'recursion_intensifier_adv_7_implausible', 'recursion_intensifier_adv_8_implausible', 'recursion_intensifier_adv_9_implausible', 'recursion_intensifier_adv_10_implausible', 'recursion_pp_verb_0_implausible', 'recursion_pp_verb_1_implausible', 'recursion_pp_verb_2_implausible', 'recursion_pp_verb_3_implausible', 'recursion_pp_verb_4_implausible', 'recursion_pp_verb_5_implausible', 'recursion_pp_verb_6_implausible', 'recursion_pp_verb_7_implausible', 'recursion_pp_verb_8_implausible', 'recursion_pp_verb_9_implausible', 'recursion_pp_verb_10_implausible', 'recursion_pp_is_0_implausible', 'recursion_pp_is_1_implausible', 'recursion_pp_is_2_implausible', 'recursion_pp_is_3_implausible', 'recursion_pp_is_4_implausible', 'recursion_pp_is_5_implausible', 'recursion_pp_is_6_implausible', 'recursion_pp_is_7_implausible', 'recursion_pp_is_8_implausible', 'recursion_pp_is_9_implausible', 'recursion_pp_is_10_implausible', 'recursion_poss_transitive_0_implausible', 'recursion_poss_transitive_1_implausible', 'recursion_poss_transitive_2_implausible', 'recursion_poss_transitive_3_implausible', 'recursion_poss_transitive_4_implausible', 'recursion_poss_transitive_5_implausible', 'recursion_poss_transitive_6_implausible', 'recursion_poss_transitive_7_implausible', 'recursion_poss_transitive_8_implausible', 'recursion_poss_transitive_9_implausible', 'recursion_poss_transitive_10_implausible', 'recursion_poss_ditransitive_0_implausible', 'recursion_poss_ditransitive_1_implausible', 'recursion_poss_ditransitive_2_implausible', 'recursion_poss_ditransitive_3_implausible', 'recursion_poss_ditransitive_4_implausible', 'recursion_poss_ditransitive_5_implausible', 'recursion_poss_ditransitive_6_implausible', 'recursion_poss_ditransitive_7_implausible', 'recursion_poss_ditransitive_8_implausible', 'recursion_poss_ditransitive_9_implausible', 'recursion_poss_ditransitive_10_implausible']
     
@@ -426,6 +461,9 @@ def recursion_eval(model, dataset):
 
     total_correct = 0
     total_total = 0
+
+    if save_name is not None:
+        fo = open("item_level_results/" + save_name + "_recursion.txt", "w")
 
     for category in categories:
         fi = open("scamp/recursion/" + category + ".tsv", "r")
@@ -441,6 +479,11 @@ def recursion_eval(model, dataset):
         for pair in pairs:
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
+                 if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tcorrect\n")
+            else:
+                if save_name is not None:
+                    fo.write(category + "\t" + str(index) + "\tincorrect\n")
 
             total += 1
 
@@ -451,11 +494,17 @@ def recursion_eval(model, dataset):
 
     logging.info("RECURSION MINIMAL PAIR RESULTS: OVERALL: " + str(total_correct) + " " + str(total_total) + " " + str(total_correct*1.0/total_total))
 
+    if save_name is not None:
+        fo.close()
 
-def priming_eval(model, dataset):
+
+def priming_eval(model, dataset, save_name=None):
     categories = ["priming_short", "priming_short_implausible", "priming_long", "priming_long_implausible"]
     
     categories = sorted(categories)
+
+    if save_name is not None:
+        fo = open("item_level_results/" + save_name + "_priming.txt", "w")
 
 
     for category in categories:
@@ -481,11 +530,17 @@ def priming_eval(model, dataset):
             total_perplexity_single += math.exp(logprob_single)
             total_perplexity_double += math.exp(logprob_double)
 
+             if save_name is not None:
+                fo.write(category + "\t" + str(index) + "\t" + str(logprob_single.item()) + "\t" + str(logprob_double.item()) + "\n")
+
         logging.info(category + " AVG SINGLE NEGATIVE LOGPROB: " + str(round((total_logprob_single/count).item(), 3)))
         logging.info(category + " AVG DOUBLE NEGATIVE LOGPROB: " + str(round((total_logprob_double/count).item(), 3)))
 
         logging.info(category + " AVG SINGLE PERPLEXITY: " + str(round((total_perplexity_single/count), 3)))
         logging.info(category + " AVG DOUBLE PERPLEXITY: " + str(round((total_perplexity_double/count), 3)))
+
+    if save_name is not None:
+        fo.close()
  
 
 

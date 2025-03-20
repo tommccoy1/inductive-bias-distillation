@@ -71,6 +71,7 @@ parser.add_argument("--eval_scamp_implausible", help="Evaluate on scamp-implausi
 parser.add_argument("--eval_blimp", help="Evaluate on minimal pairs from the Blimp dataset", action='store_true')
 parser.add_argument("--eval_test", help="Evaluate on the test set", action='store_true')
 parser.add_argument("--eval_suffix", help="Suffix to add to the evaluation log file", type=str, default=None)
+parser.add_argument("--eval_save_items", help="Save all item-level results for the evaluation", action='store_true')
 args = parser.parse_args()
 
 
@@ -194,30 +195,36 @@ if args.eval_generate:
     for _ in range(3):
         sample_generation(dataset, trainer, n_positions=args.n_positions)
 
+if args.eval_save_items:
+    save_name = args.model_name
+else:
+    save_name = None
+
+
 if args.eval_zorro:
     # Evaluate on minimal pairs from the Zorro dataset
-    zorro_eval(model, dataset)
+    zorro_eval(model, dataset, save_name=save_name)
 
 if args.eval_blimp:
     # Evaluate on minimal pairs from the Blimp dataset
-    blimp_eval(model, dataset)
+    blimp_eval(model, dataset, save_name=save_name)
 
 if args.eval_scamp_plausible:
     # Evaluate on scamp-plausible
-    scamp_eval(model, dataset, plausible=True)
+    scamp_eval(model, dataset, plausible=True, save_name=save_name)
 
 if args.eval_scamp_implausible:
     # Evaluate on scamp-implausible
-    scamp_eval(model, dataset, plausible=False)
+    scamp_eval(model, dataset, plausible=False, save_name=save_name)
 
 
 if args.eval_recursion:
     # Evaluate on recursion dataset
-    recursion_eval(model, dataset)
+    recursion_eval(model, dataset, save_name=save_name)
 
 if args.eval_priming:
     # Evaluate on priming
-    priming_eval(model, dataset)
+    priming_eval(model, dataset, save_name=save_name)
 
 
 # No matter what, evaluate on the validation set
