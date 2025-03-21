@@ -1,8 +1,10 @@
 CHILDES/
 expt_adapt/
 expt_meta_train/
+item_level_results/
 logs/
 __pycache__/
+save_items/
 targeted_evals/
 transformers/
 .venv/

@@ -1,76 +1,76 @@
-2023-05-13 13:40:53,429 INFO     Namespace(directory='CHILDES/pretraining_full_0/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name=None, pretrained_vocab_size=None, n_epochs=32, eval_every=100, weight_decay=0.01, learning_rate=0.001, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden1024_pretraining_full_nopre_31', model_index=None, weight_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/weights/', log_dir='/scratch/gpfs/tm4633/inductive_bias_distillation/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_recursion_big=False, eval_recursion_big2=False, eval_recursion_big3=False, eval_recursion_big4=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=True, eval_blimp=False, eval_test=False, eval_suffix='scamp_implausible')
-2023-05-13 13:41:07,300 INFO     Vocab size: 17096
-2023-05-13 13:41:09,308 INFO     Model size: 34.3M parameters
-2023-05-13 13:41:17,482 INFO     Loading model checkpoint from /scratch/gpfs/tm4633/inductive_bias_distillation/weights/bestparams_adapt_hidden1024_pretraining_full_nopre_31
-2023-05-13 13:41:19,304 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:adjunct_island_implausible 793 1000 0.793
-2023-05-13 13:41:20,850 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:adv_order_implausible 863 1000 0.863
-2023-05-13 13:41:22,251 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:anaphor_gender_agreement_implausible 942 1000 0.942
-2023-05-13 13:41:23,710 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:anaphor_number_agreement_implausible 727 1000 0.727
-2023-05-13 13:41:25,361 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_double_1_implausible 306 1000 0.306
-2023-05-13 13:41:27,062 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_double_2_implausible 943 1000 0.943
-2023-05-13 13:41:28,529 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_single_1_implausible 305 1000 0.305
-2023-05-13 13:41:30,064 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_single_2_implausible 942 1000 0.942
-2023-05-13 13:41:31,781 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:complex_np_island_implausible 500 1000 0.5
-2023-05-13 13:41:33,424 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:coordinate_structure_constrain_object_extraction_implausible 425 1000 0.425
-2023-05-13 13:41:34,919 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_1_implausible 933 1000 0.933
-2023-05-13 13:41:36,425 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_2_implausible 943 1000 0.943
-2023-05-13 13:41:37,980 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_adj_1_implausible 905 1000 0.905
-2023-05-13 13:41:39,540 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_adj_2_implausible 907 1000 0.907
-2023-05-13 13:41:41,423 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:ellipsis_implausible 562 1000 0.562
-2023-05-13 13:41:42,748 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:green_ideas_implausible 726 1000 0.726
-2023-05-13 13:41:44,079 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:intransitive_implausible 648 1000 0.648
-2023-05-13 13:41:45,624 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:left_branch_island_simple_question_implausible 743 1000 0.743
-2023-05-13 13:41:47,115 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:matrix_question_npi_licensor_present_implausible 650 1000 0.65
-2023-05-13 13:41:48,614 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:npi_present_implausible 526 1000 0.526
-2023-05-13 13:41:50,198 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:only_npi_licensor_present_implausible 410 1000 0.41
-2023-05-13 13:41:51,955 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:only_npi_scope_implausible 932 1000 0.932
-2023-05-13 13:41:53,561 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:pp_order_implausible 787 1000 0.787
-2023-05-13 13:41:55,254 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_c_command_implausible 492 1000 0.492
-2023-05-13 13:41:56,932 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_1_implausible 965 1000 0.965
-2023-05-13 13:41:58,613 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_2_implausible 527 1000 0.527
-2023-05-13 13:42:00,285 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_3_implausible 481 1000 0.481
-2023-05-13 13:42:02,146 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_long_implausible 613 1000 0.613
-2023-05-13 13:42:03,834 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_medium_implausible 683 1000 0.683
-2023-05-13 13:42:05,370 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_short_implausible 909 1000 0.909
-2023-05-13 13:42:07,227 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_long_implausible 718 1000 0.718
-2023-05-13 13:42:08,923 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_medium_implausible 867 1000 0.867
-2023-05-13 13:42:10,477 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_short_implausible 837 1000 0.837
-2023-05-13 13:42:12,909 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_long_implausible 494 1000 0.494
-2023-05-13 13:42:14,903 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_medium_implausible 497 1000 0.497
-2023-05-13 13:42:16,598 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_short_implausible 613 1000 0.613
-2023-05-13 13:42:19,088 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_long_implausible 830 1000 0.83
-2023-05-13 13:42:21,137 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_medium_implausible 986 1000 0.986
-2023-05-13 13:42:22,883 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_short_implausible 1000 1000 1.0
-2023-05-13 13:42:25,691 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_long_implausible 936 1000 0.936
-2023-05-13 13:42:27,801 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_medium_implausible 947 1000 0.947
-2023-05-13 13:42:29,436 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_short_implausible 986 1000 0.986
-2023-05-13 13:42:32,287 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_long_implausible 474 1000 0.474
-2023-05-13 13:42:34,422 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_medium_implausible 670 1000 0.67
-2023-05-13 13:42:36,060 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_short_implausible 905 1000 0.905
-2023-05-13 13:42:37,629 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:sentential_negation_npi_licensor_present_implausible 998 1000 0.998
-2023-05-13 13:42:39,369 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:sentential_negation_npi_scope_implausible 495 1000 0.495
-2023-05-13 13:42:40,857 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_agreement_question_vary_aux_implausible 855 1000 0.855
-2023-05-13 13:42:42,318 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_agreement_question_vary_subj_implausible 686 1000 0.686
-2023-05-13 13:42:43,789 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_subj_implausible 722 1000 0.722
-2023-05-13 13:42:45,262 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_implausible 814 1000 0.814
-2023-05-13 13:42:46,930 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_pp_implausible 312 1000 0.312
-2023-05-13 13:42:48,670 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_rc_implausible 384 1000 0.384
-2023-05-13 13:42:50,033 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_verb_vary_verb_implausible 637 1000 0.637
-2023-05-13 13:42:51,535 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:svo_vos_implausible 405 1000 0.405
-2023-05-13 13:42:53,079 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:swapped_ditransitive_1_implausible 1000 1000 1.0
-2023-05-13 13:42:54,620 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:swapped_ditransitive_2_implausible 991 1000 0.991
-2023-05-13 13:42:56,119 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:transitive_implausible 885 1000 0.885
-2023-05-13 13:42:57,723 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_island_implausible 476 1000 0.476
-2023-05-13 13:42:59,478 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_object_gap_implausible 839 1000 0.839
-2023-05-13 13:43:01,399 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_object_gap_long_distance_implausible 783 1000 0.783
-2023-05-13 13:43:03,144 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_subject_gap_implausible 928 1000 0.928
-2023-05-13 13:43:05,060 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_subject_gap_long_distance_implausible 933 1000 0.933
-2023-05-13 13:43:06,787 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_no_gap_implausible 996 1000 0.996
-2023-05-13 13:43:08,680 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_no_gap_long_distance_implausible 946 1000 0.946
-2023-05-13 13:43:10,336 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_with_gap_implausible 341 1000 0.341
-2023-05-13 13:43:12,153 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_with_gap_long_distance_implausible 180 1000 0.18
-2023-05-13 13:43:12,153 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS: OVERALL: 48454 67000 0.7231940298507463
-2023-05-13 13:43:16,020 INFO     Validation loss: 3.075871811871532
-2023-05-13 13:43:16,020 INFO     Validation perplexity: 21.668764765531925
-2023-05-13 13:43:23,932 INFO     Validation (strided) loss: 3.045535776531832
-2023-05-13 13:43:23,932 INFO     Validation (strided) perplexity: 21.02129090060262
+2025-03-20 12:42:12,850 INFO     Namespace(directory='CHILDES/pretraining_full_31/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name=None, pretrained_vocab_size=None, n_epochs=32, eval_every=100, weight_decay=0.01, learning_rate=0.001, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='bestparams_adapt_hidden1024_pretraining_full_nopre_31', model_index=None, weight_dir='/gpfs/radev/home/rtm34/project/inductive-bias-distillation/weights/', log_dir='/gpfs/radev/home/rtm34/project/inductive-bias-distillation/save_items/logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=True, eval_blimp=False, eval_test=False, eval_suffix='scamp_implausible', eval_save_items=True)
+2025-03-20 12:42:23,333 INFO     Vocab size: 17096
+2025-03-20 12:42:23,889 INFO     Model size: 34.3M parameters
+2025-03-20 12:42:30,875 INFO     Loading model checkpoint from /gpfs/radev/home/rtm34/project/inductive-bias-distillation/weights/bestparams_adapt_hidden1024_pretraining_full_nopre_31
+2025-03-20 12:42:32,300 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:adjunct_island_implausible 824 1000 0.824
+2025-03-20 12:42:33,369 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:adv_order_implausible 762 1000 0.762
+2025-03-20 12:42:34,352 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:anaphor_gender_agreement_implausible 915 1000 0.915
+2025-03-20 12:42:35,374 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:anaphor_number_agreement_implausible 738 1000 0.738
+2025-03-20 12:42:36,603 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_double_1_implausible 283 1000 0.283
+2025-03-20 12:42:37,889 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_double_2_implausible 952 1000 0.952
+2025-03-20 12:42:38,936 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_single_1_implausible 321 1000 0.321
+2025-03-20 12:42:40,060 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:center_embedding_single_2_implausible 964 1000 0.964
+2025-03-20 12:42:41,343 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:complex_np_island_implausible 578 1000 0.578
+2025-03-20 12:42:42,569 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:coordinate_structure_constrain_object_extraction_implausible 605 1000 0.605
+2025-03-20 12:42:43,638 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_1_implausible 946 1000 0.946
+2025-03-20 12:42:44,712 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_2_implausible 966 1000 0.966
+2025-03-20 12:42:45,846 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_adj_1_implausible 893 1000 0.893
+2025-03-20 12:42:46,979 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:determiner_noun_agreement_adj_2_implausible 905 1000 0.905
+2025-03-20 12:42:48,367 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:ellipsis_implausible 622 1000 0.622
+2025-03-20 12:42:49,322 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:green_ideas_implausible 714 1000 0.714
+2025-03-20 12:42:50,272 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:intransitive_implausible 624 1000 0.624
+2025-03-20 12:42:51,337 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:left_branch_island_simple_question_implausible 806 1000 0.806
+2025-03-20 12:42:52,429 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:matrix_question_npi_licensor_present_implausible 625 1000 0.625
+2025-03-20 12:42:53,520 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:npi_present_implausible 493 1000 0.493
+2025-03-20 12:42:54,666 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:only_npi_licensor_present_implausible 928 1000 0.928
+2025-03-20 12:42:55,974 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:only_npi_scope_implausible 984 1000 0.984
+2025-03-20 12:42:57,171 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:pp_order_implausible 822 1000 0.822
+2025-03-20 12:42:58,433 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_c_command_implausible 557 1000 0.557
+2025-03-20 12:42:59,681 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_1_implausible 987 1000 0.987
+2025-03-20 12:43:00,931 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_2_implausible 619 1000 0.619
+2025-03-20 12:43:02,176 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:principle_A_domain_3_implausible 507 1000 0.507
+2025-03-20 12:43:03,583 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_long_implausible 478 1000 0.478
+2025-03-20 12:43:04,856 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_medium_implausible 591 1000 0.591
+2025-03-20 12:43:05,922 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adj_short_implausible 862 1000 0.862
+2025-03-20 12:43:07,328 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_long_implausible 770 1000 0.77
+2025-03-20 12:43:08,611 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_medium_implausible 914 1000 0.914
+2025-03-20 12:43:09,676 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_intensifier_adv_short_implausible 917 1000 0.917
+2025-03-20 12:43:11,410 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_long_implausible 318 1000 0.318
+2025-03-20 12:43:12,910 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_medium_implausible 354 1000 0.354
+2025-03-20 12:43:14,189 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_ditransitive_short_implausible 594 1000 0.594
+2025-03-20 12:43:15,951 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_long_implausible 644 1000 0.644
+2025-03-20 12:43:17,480 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_medium_implausible 958 1000 0.958
+2025-03-20 12:43:18,802 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_poss_transitive_short_implausible 1000 1000 1.0
+2025-03-20 12:43:20,753 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_long_implausible 955 1000 0.955
+2025-03-20 12:43:22,321 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_medium_implausible 974 1000 0.974
+2025-03-20 12:43:23,529 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_is_short_implausible 999 1000 0.999
+2025-03-20 12:43:25,631 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_long_implausible 729 1000 0.729
+2025-03-20 12:43:27,212 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_medium_implausible 870 1000 0.87
+2025-03-20 12:43:28,433 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:recursion_pp_verb_short_implausible 731 1000 0.731
+2025-03-20 12:43:29,583 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:sentential_negation_npi_licensor_present_implausible 998 1000 0.998
+2025-03-20 12:43:30,893 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:sentential_negation_npi_scope_implausible 481 1000 0.481
+2025-03-20 12:43:31,952 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_agreement_question_vary_aux_implausible 856 1000 0.856
+2025-03-20 12:43:33,011 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_agreement_question_vary_subj_implausible 679 1000 0.679
+2025-03-20 12:43:34,074 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_subj_implausible 743 1000 0.743
+2025-03-20 12:43:35,133 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_implausible 829 1000 0.829
+2025-03-20 12:43:36,378 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_pp_implausible 306 1000 0.306
+2025-03-20 12:43:37,679 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_aux_vary_verb_rc_implausible 366 1000 0.366
+2025-03-20 12:43:38,650 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:subj_verb_vary_verb_implausible 606 1000 0.606
+2025-03-20 12:43:39,720 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:svo_vos_implausible 447 1000 0.447
+2025-03-20 12:43:40,769 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:swapped_ditransitive_1_implausible 1000 1000 1.0
+2025-03-20 12:43:41,818 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:swapped_ditransitive_2_implausible 994 1000 0.994
+2025-03-20 12:43:42,878 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:transitive_implausible 888 1000 0.888
+2025-03-20 12:43:44,083 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_island_implausible 395 1000 0.395
+2025-03-20 12:43:45,389 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_object_gap_implausible 754 1000 0.754
+2025-03-20 12:43:46,821 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_object_gap_long_distance_implausible 657 1000 0.657
+2025-03-20 12:43:48,127 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_subject_gap_implausible 916 1000 0.916
+2025-03-20 12:43:49,554 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_questions_subject_gap_long_distance_implausible 947 1000 0.947
+2025-03-20 12:43:50,839 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_no_gap_implausible 999 1000 0.999
+2025-03-20 12:43:52,247 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_no_gap_long_distance_implausible 942 1000 0.942
+2025-03-20 12:43:53,463 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_with_gap_implausible 278 1000 0.278
+2025-03-20 12:43:54,812 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS:wh_vs_that_with_gap_long_distance_implausible 237 1000 0.237
+2025-03-20 12:43:54,812 INFO     SCAMP IMPLAUSIBLE MINIMAL PAIR RESULTS: OVERALL: 48916 67000 0.730089552238806
+2025-03-20 12:43:57,151 INFO     Validation loss: 3.073276442375051
+2025-03-20 12:43:57,152 INFO     Validation perplexity: 21.612599231117745
+2025-03-20 12:44:01,811 INFO     Validation (strided) loss: 3.0427702178122655
+2025-03-20 12:44:01,811 INFO     Validation (strided) perplexity: 20.96323560092813

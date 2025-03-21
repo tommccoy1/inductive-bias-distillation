@@ -242,7 +242,7 @@ def zorro_eval(model, dataset, save_name=None):
 
         correct = 0
         total = 0
-        for pair in pairs:
+        for index, pair in enumerate(pairs):
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
                 if save_name is not None:
@@ -368,7 +368,7 @@ def blimp_eval(model, dataset, save_name=None):
 
         correct = 0
         total = 0
-        for pair in pairs:
+        for index, pair in enumerate(pairs):
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
                 if save_name is not None:
@@ -423,7 +423,7 @@ def scamp_eval(model, dataset, plausible=True, save_name=None):
 
         correct = 0
         total = 0
-        for pair in pairs:
+        for index, pair in enumerate(pairs):
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
                 if save_name is not None:
@@ -476,10 +476,10 @@ def recursion_eval(model, dataset, save_name=None):
 
         correct = 0
         total = 0
-        for pair in pairs:
+        for index, pair in enumerate(pairs):
             if minimal_pair(model, dataset, pair[0], pair[1], category=category)["correct"]:
                 correct += 1
-                 if save_name is not None:
+                if save_name is not None:
                     fo.write(category + "\t" + str(index) + "\tcorrect\n")
             else:
                 if save_name is not None:
@@ -518,7 +518,7 @@ def priming_eval(model, dataset, save_name=None):
 
         pairs = []
 
-        for line in fi:
+        for index, line in enumerate(fi):
             count += 1
             parts = line.strip().split("\t")
             logprob_single = sentence_negative_logprob(model, dataset, parts[0], category=category)
@@ -530,7 +530,7 @@ def priming_eval(model, dataset, save_name=None):
             total_perplexity_single += math.exp(logprob_single)
             total_perplexity_double += math.exp(logprob_double)
 
-             if save_name is not None:
+            if save_name is not None:
                 fo.write(category + "\t" + str(index) + "\t" + str(logprob_single.item()) + "\t" + str(logprob_double.item()) + "\n")
 
         logging.info(category + " AVG SINGLE NEGATIVE LOGPROB: " + str(round((total_logprob_single/count).item(), 3)))
