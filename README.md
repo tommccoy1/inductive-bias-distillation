@@ -315,5 +315,16 @@ python make_training_sets.py
 3. Download the Zorro dataset from the [repository provided by Huebner et al.](https://github.com/phueb/Zorro/tree/master/sentences/babyberta)
 
 
+# Download model weights
 
+The trained model weights for our main experiments are available at [this OSF link](https://osf.io/59rgm/files/osfstorage). Below is a list of folders along with the types of models stored in each folder:
+
+- `meta_all_primitives`: Models meta-trained on formal languages (40 reruns), with our full set of primitives. These are the models underlying Figure 3 in the paper ("Prior-trained neural network").
+- `meta_no_recursion`: Models meta-trained on formal languages but with the recursion primitive withheld (20 reruns). These are the "no recursion" cases in Figure 6 in the paper.
+- `meta_no_sync`: Models meta-trained on formal languages but with the synchrony primitive withheld (20 reruns). These are the "no synchrony" cases in Figure 6 in the paper.
+- `natural_language_meta`: The `meta_all_primitives` models further trained on an English corpus. These are the prior-trained networks in Figure 4 and Figure 5 in the paper.
+- `natural_language_meta_no_recursion`: The `meta_no_recursion` models further trained on an English corpus. These are the "prior-trained (no recursion)" models in Figure 6 in the paper.
+- `natural_language_meta_no_sync`: The `meta_no_sync` models further trained on an English corpus. These are the "prior-trained (no synchrony)" models in Figure 6 in the paper.
+- `natural_language_standard`: Randomly-initialized models trained on the English corpus. These are the standard networks in Figure 4 and Figure 5 in the paper.
+- `pretrained`: These models are like `meta_all_primitives` but pretrained rather than prior-trained. These are the "pre-trained neural networks" in Figure S2 in the supplementary materials.
 
