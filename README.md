@@ -317,7 +317,7 @@ python make_training_sets.py
 
 # Download model weights
 
-The trained model weights for our main experiments are available at [this OSF link](https://osf.io/59rgm/files/osfstorage). Below is a list of folders along with the types of models stored in each folder:
+The trained model weights for our main experiments are available at [this OSF link](https://osf.io/59rgm/files/osfstorage). Below is a list of folders along with the types of models stored in each folder. Note that the "standard" model weights from Figure 3 of the paper are not included here; we used PyTorch's default random initialization approach to generate those weights:
 
 - `meta_all_primitives`: Models meta-trained on formal languages (40 reruns), with our full set of primitives. These are the models underlying Figure 3 in the paper ("Prior-trained neural network").
 - `meta_no_recursion`: Models meta-trained on formal languages but with the recursion primitive withheld (20 reruns). These are the "no recursion" cases in Figure 6 in the paper.
@@ -327,4 +327,34 @@ The trained model weights for our main experiments are available at [this OSF li
 - `natural_language_meta_no_sync`: The `meta_no_sync` models further trained on an English corpus. These are the "prior-trained (no synchrony)" models in Figure 6 in the paper.
 - `natural_language_standard`: Randomly-initialized models trained on the English corpus. These are the standard networks in Figure 4 and Figure 5 in the paper.
 - `pretrained`: These models are like `meta_all_primitives` but pretrained rather than prior-trained. These are the "pre-trained neural networks" in Figure S2 in the supplementary materials.
+
+Here is some basic code for loading one of the meta-trained models:
+```
+from models import *
+
+model_name = "meta_lm_hidden1024_17"
+model = RNNLM(rnn_type="LSTM", vocab_size=15, emb_size=1024, hidden_size=1024, n_layers=2, dropout=0.1, tie_weights=True, save_dir=".", model_name=model_name).to(device)
+
+# If you want a randomly-initialized model, just give it a new name 
+# (not the name of a saved model) and omit the loading command
+# shown below
+model.load()
+```
+
+And here is some basic code for loading one of the natural language models:
+```
+from models import *
+
+model_name = "bestparams_adapt_hidden1024_pretraining_full_yespre23_0"
+model = RNNLM(rnn_type="LSTM", vocab_size=17096, emb_size=1024, hidden_size=1024, n_layers=2, dropout=0.1, tie_weights=True, save_dir=".", model_name=model_name).to(device)
+
+# If you want a randomly-initialized model, just give it a new name 
+# (not the name of a saved model) and omit the loading command
+# shown below
+model.load()
+```
+
+Note, however, that for full functionality you will probably want to also load a dataset so that you can then use its tokenizer (the models load in the code above work directly with token IDs, not with textual input, so the tokenizer is necessary for using actual text). For illustrations of the whole pipeline, refer to `lm_train.py`, which instantiates a dataset and a model (the model can either be from scratch or from a checkpoitn) and can then evaluate the model by running an evaluation function such as `scamp_eval`.
+
+
 
