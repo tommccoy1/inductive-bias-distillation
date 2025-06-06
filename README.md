@@ -7,7 +7,7 @@ Bibtex:
 ```
 @article{mccoy2025modeling,
   title={Modeling rapid language learning by distilling Bayesian priors into artificial neural networks},
-  author={McCoy, R Thomas and Griffiths, Thomas L},
+  author={McCoy, R. Thomas and Griffiths, Thomas L.},
   journal={Nature Communications},
   volume={16},
   number={1},
