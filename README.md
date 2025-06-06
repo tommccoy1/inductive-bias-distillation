@@ -1,4 +1,26 @@
 
+# Introduction
+
+This repository contains the code for [Modeling rapid language learning by distilling Bayesian priors into artificial neural networks](https://www.nature.com/articles/s41467-025-59957-y) by Tom McCoy and Tom Griffiths. If you use this code, please cite that paper.
+
+Bibtex:
+```
+@article{mccoy2025modeling,
+  title={Modeling rapid language learning by distilling Bayesian priors into artificial neural networks},
+  author={McCoy, R Thomas and Griffiths, Thomas L},
+  journal={Nature Communications},
+  volume={16},
+  number={1},
+  pages={1--14},
+  year={2025},
+  publisher={Nature Publishing Group}
+}
+```
+
+Text:
+```
+McCoy, R. T., & Griffiths, T. L. (2025). Modeling rapid language learning by distilling Bayesian priors into artificial neural networks. Nature Communications, 16(1), 1-14.
+```
 
 # Getting started
 0. We ran our experiments on the operating system Springdale Linux 8, but it should work on any system that can run Python. The installation steps below should take approximately 10 minutes.
