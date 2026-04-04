@@ -1,0 +1,33 @@
+2026-04-04 10:55:59,321 INFO     Namespace(directory='CHILDES/pretraining_full_37/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_37', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_37_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro', eval_save_items=False)
+2026-04-04 10:56:14,083 INFO     Vocab size: 17096
+2026-04-04 10:56:15,159 INFO     Model size: 16.8M parameters
+2026-04-04 10:56:23,777 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_37
+2026-04-04 10:56:24,095 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_37_0
+2026-04-04 10:56:27,376 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1713 2000 0.8565
+2026-04-04 10:56:30,328 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1749 2000 0.8745
+2026-04-04 10:56:33,441 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1183 2000 0.5915
+2026-04-04 10:56:36,563 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1355 2000 0.6775
+2026-04-04 10:56:39,707 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1432 2000 0.716
+2026-04-04 10:56:42,692 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1546 2000 0.773
+2026-04-04 10:56:45,811 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1785 2000 0.8925
+2026-04-04 10:56:48,744 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1828 2000 0.914
+2026-04-04 10:56:51,910 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 1982 2000 0.991
+2026-04-04 10:56:54,506 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1386 2000 0.693
+2026-04-04 10:56:57,823 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1578 2000 0.789
+2026-04-04 10:57:00,986 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 1982 2000 0.991
+2026-04-04 10:57:04,501 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 1093 2000 0.5465
+2026-04-04 10:57:07,861 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1963 2000 0.9815
+2026-04-04 10:57:11,198 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1987 2000 0.9935
+2026-04-04 10:57:14,422 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1587 2000 0.7935
+2026-04-04 10:57:17,754 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1353 2000 0.6765
+2026-04-04 10:57:20,918 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1328 2000 0.664
+2026-04-04 10:57:23,977 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1894 2000 0.947
+2026-04-04 10:57:27,090 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1445 2000 0.7225
+2026-04-04 10:57:30,284 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1234 2000 0.617
+2026-04-04 10:57:33,434 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1870 2000 0.935
+2026-04-04 10:57:36,845 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 1015 2000 0.5075
+2026-04-04 10:57:36,845 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 36288 46000 0.7888695652173913
+2026-04-04 10:57:40,716 INFO     Validation loss: 3.071418855434336
+2026-04-04 10:57:40,716 INFO     Validation perplexity: 21.57248921448638
+2026-04-04 10:57:48,684 INFO     Validation (strided) loss: 3.04072442251039
+2026-04-04 10:57:48,684 INFO     Validation (strided) perplexity: 20.92039295061238

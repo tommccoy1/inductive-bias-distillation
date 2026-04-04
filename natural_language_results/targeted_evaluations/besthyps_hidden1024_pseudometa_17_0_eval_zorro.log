@@ -1,0 +1,33 @@
+2026-04-04 10:55:49,682 INFO     Namespace(directory='CHILDES/pretraining_full_17/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_17', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_17_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro', eval_save_items=False)
+2026-04-04 10:56:04,520 INFO     Vocab size: 17096
+2026-04-04 10:56:05,611 INFO     Model size: 16.8M parameters
+2026-04-04 10:56:14,214 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_17
+2026-04-04 10:56:14,585 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_17_0
+2026-04-04 10:56:18,013 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1629 2000 0.8145
+2026-04-04 10:56:21,013 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1740 2000 0.87
+2026-04-04 10:56:24,151 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1280 2000 0.64
+2026-04-04 10:56:27,289 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1389 2000 0.6945
+2026-04-04 10:56:30,468 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1525 2000 0.7625
+2026-04-04 10:56:33,493 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1607 2000 0.8035
+2026-04-04 10:56:36,625 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1730 2000 0.865
+2026-04-04 10:56:39,593 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1789 2000 0.8945
+2026-04-04 10:56:42,786 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 1989 2000 0.9945
+2026-04-04 10:56:45,401 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1399 2000 0.6995
+2026-04-04 10:56:48,729 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1562 2000 0.781
+2026-04-04 10:56:51,935 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 1991 2000 0.9955
+2026-04-04 10:56:55,466 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 944 2000 0.472
+2026-04-04 10:56:58,836 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1951 2000 0.9755
+2026-04-04 10:57:02,189 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1921 2000 0.9605
+2026-04-04 10:57:05,429 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1660 2000 0.83
+2026-04-04 10:57:08,776 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1178 2000 0.589
+2026-04-04 10:57:11,962 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1373 2000 0.6865
+2026-04-04 10:57:15,048 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1914 2000 0.957
+2026-04-04 10:57:18,197 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1407 2000 0.7035
+2026-04-04 10:57:21,415 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1044 2000 0.522
+2026-04-04 10:57:24,583 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1839 2000 0.9195
+2026-04-04 10:57:28,004 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 918 2000 0.459
+2026-04-04 10:57:28,004 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 35779 46000 0.777804347826087
+2026-04-04 10:57:31,866 INFO     Validation loss: 3.0691943030948003
+2026-04-04 10:57:31,866 INFO     Validation perplexity: 21.524553420743807
+2026-04-04 10:57:39,791 INFO     Validation (strided) loss: 3.038524011413567
+2026-04-04 10:57:39,791 INFO     Validation (strided) perplexity: 20.874410094960226

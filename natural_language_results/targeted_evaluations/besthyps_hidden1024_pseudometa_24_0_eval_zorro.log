@@ -1,0 +1,33 @@
+2026-04-04 10:59:39,919 INFO     Namespace(directory='CHILDES/pretraining_full_24/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_24', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_24_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro', eval_save_items=False)
+2026-04-04 10:59:54,637 INFO     Vocab size: 17096
+2026-04-04 10:59:55,695 INFO     Model size: 16.8M parameters
+2026-04-04 11:00:04,282 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_24
+2026-04-04 11:00:04,606 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_24_0
+2026-04-04 11:00:08,885 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1670 2000 0.835
+2026-04-04 11:00:11,814 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1759 2000 0.8795
+2026-04-04 11:00:14,913 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1232 2000 0.616
+2026-04-04 11:00:18,009 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1341 2000 0.6705
+2026-04-04 11:00:21,161 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1431 2000 0.7155
+2026-04-04 11:00:24,145 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1607 2000 0.8035
+2026-04-04 11:00:27,264 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1778 2000 0.889
+2026-04-04 11:00:30,191 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1819 2000 0.9095
+2026-04-04 11:00:33,370 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 2000 2000 1.0
+2026-04-04 11:00:35,941 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1340 2000 0.67
+2026-04-04 11:00:39,249 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1589 2000 0.7945
+2026-04-04 11:00:42,430 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 2000 2000 1.0
+2026-04-04 11:00:45,933 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 1007 2000 0.5035
+2026-04-04 11:00:49,286 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1935 2000 0.9675
+2026-04-04 11:00:52,613 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1937 2000 0.9685
+2026-04-04 11:00:55,844 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1707 2000 0.8535
+2026-04-04 11:00:59,168 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1068 2000 0.534
+2026-04-04 11:01:02,331 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1652 2000 0.826
+2026-04-04 11:01:05,370 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1916 2000 0.958
+2026-04-04 11:01:08,490 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1424 2000 0.712
+2026-04-04 11:01:11,686 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1690 2000 0.845
+2026-04-04 11:01:14,828 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1819 2000 0.9095
+2026-04-04 11:01:18,226 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 829 2000 0.4145
+2026-04-04 11:01:18,227 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 36550 46000 0.7945652173913044
+2026-04-04 11:01:22,036 INFO     Validation loss: 3.0685210973023342
+2026-04-04 11:01:22,036 INFO     Validation perplexity: 21.51006784313517
+2026-04-04 11:01:29,862 INFO     Validation (strided) loss: 3.0379189642193447
+2026-04-04 11:01:29,862 INFO     Validation (strided) perplexity: 20.86178391180475

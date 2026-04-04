@@ -159,7 +159,7 @@ python perplexity_all.py
 The steps listed below describe all of the scripts whose results are aggregated by these commands.
 
 
-1. Create datasets: First download the CHILDES training set (not yet publicly available; please contact us if you need it). Then, move the scripts `divide_training.py` and `make_training_sets.py` into the `CHILDEs/` directory, and then run each of them:
+1. Create datasets: First download the CHILDES training set following [the instructions provided by the authors of the paper introducing that dataset](https://github.com/adityayedetore/lm-povstim-with-childes/tree/master/data/CHILDES). Then, move the scripts `divide_training.py` and `make_training_sets.py` into the `CHILDEs/` directory, and then run each of them:
 ```
 python divide_training.py
 python make_training_sets.py
@@ -335,6 +335,22 @@ python make_training_sets.py
 ```
 
 3. Download the Zorro dataset from the [repository provided by Huebner et al.](https://github.com/phueb/Zorro/tree/master/sentences/babyberta)
+
+
+
+# Replicating the experiments in the response to Bowers
+
+1. Adapt the pre-trained networks to the CHILDES training data. To do so, run the commands in the file `natural_language_results/perplexity/adapt_besthyps_pseudometa.sh`. Each one of these commands took us about 5 hours on one A100 GPU.
+
+2. Compute the test set perplexity of these models. To do so, run the commands in the file `natural_language_results/perplexity/test_perplexity_pseudometa.sh`. Each of these commands took less than 1 hour on one A100 GPU. The log files from these evaluations are in the files containing the string `pseudometa` in the folder `natural_language_results/perplexity/`. To aggregate the results of these experiments (producing the data shown in the perplexity figure), run `python perplexity_pretrained.py` in the folder `natural_language_results/`. 
+
+3. Perform the minimal pair evaluations for these models. To do so, run the commands in the files `test_blimp_pretrained.sh`, `test_scamp_plausible_pretrained.sh`, `test_scamp_implausible_pretrained.sh`, and `test_zorro_pretrained.sh` inside `natural_language_results/targeted_evaluations`. To aggregate the results of these experiments (producing the data shown in the minimal pair table in the supplement), run `python minimal_pairs_pretrained.py --dataset zorro`, `python minimal_pairs_pretrained.py --dataset blimp`, `python minimal_pairs_pretrained.py --dataset scamp_plausible`, and `python minimal_pairs_pretrained.py --dataset scamp_implausible` in the folder `natural_language_results/`. 
+
+4. Perform the recursion evaluations for these models. To do so, run the commands in the file `test_recursion_pretrained.sh`  inside `natural_language_results/targeted_evaluations`. To aggregate the results of these experiments (producing the results in the recursion figure that is broken down by phenomenon), run the command `python recursion_pretrained.py` inside `natural_language_results/`. To aggregate the results in a way that averages across phenomena, run the command `python recursion_pretrained.py --r` inside `ablation_natural_results/`. 
+
+5. Perform the priming analyses for these models. To do so, run the commands in the file `test_priming_pretrained.sh`  inside `natural_language_results/targeted_evaluations/`. To aggregate the results of these experiments, run the command `python priming_pretrained.py  --r` inside `natural_language_results/`.
+
+
 
 
 # Download model weights

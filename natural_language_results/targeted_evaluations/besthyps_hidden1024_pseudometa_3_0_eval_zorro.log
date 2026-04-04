@@ -1,0 +1,33 @@
+2026-04-04 10:57:38,559 INFO     Namespace(directory='CHILDES/pretraining_full_3/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_3', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_3_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro', eval_save_items=False)
+2026-04-04 10:57:53,342 INFO     Vocab size: 17096
+2026-04-04 10:57:54,405 INFO     Model size: 16.8M parameters
+2026-04-04 10:58:02,979 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_3
+2026-04-04 10:58:03,740 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_3_0
+2026-04-04 10:58:07,053 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1672 2000 0.836
+2026-04-04 10:58:10,050 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1745 2000 0.8725
+2026-04-04 10:58:13,156 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1263 2000 0.6315
+2026-04-04 10:58:16,274 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1353 2000 0.6765
+2026-04-04 10:58:19,436 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1558 2000 0.779
+2026-04-04 10:58:22,466 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1607 2000 0.8035
+2026-04-04 10:58:25,586 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1896 2000 0.948
+2026-04-04 10:58:28,553 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1795 2000 0.8975
+2026-04-04 10:58:31,745 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 1997 2000 0.9985
+2026-04-04 10:58:34,357 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1381 2000 0.6905
+2026-04-04 10:58:37,661 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1631 2000 0.8155
+2026-04-04 10:58:40,853 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 2000 2000 1.0
+2026-04-04 10:58:44,343 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 1014 2000 0.507
+2026-04-04 10:58:47,651 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1940 2000 0.97
+2026-04-04 10:58:50,962 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1943 2000 0.9715
+2026-04-04 10:58:54,198 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1706 2000 0.853
+2026-04-04 10:58:57,506 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1216 2000 0.608
+2026-04-04 10:59:00,671 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1051 2000 0.5255
+2026-04-04 10:59:03,739 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1909 2000 0.9545
+2026-04-04 10:59:06,884 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1396 2000 0.698
+2026-04-04 10:59:10,075 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1354 2000 0.677
+2026-04-04 10:59:13,229 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1821 2000 0.9105
+2026-04-04 10:59:16,640 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 1070 2000 0.535
+2026-04-04 10:59:16,640 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 36318 46000 0.7895217391304348
+2026-04-04 10:59:20,494 INFO     Validation loss: 3.068230480858401
+2026-04-04 10:59:20,494 INFO     Validation perplexity: 21.503817571969613
+2026-04-04 10:59:28,413 INFO     Validation (strided) loss: 3.037722153327667
+2026-04-04 10:59:28,413 INFO     Validation (strided) perplexity: 20.857678489520243

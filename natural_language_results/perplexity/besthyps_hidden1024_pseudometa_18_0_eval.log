@@ -1,0 +1,13 @@
+2026-04-03 18:36:07,930 INFO     Namespace(directory='CHILDES/pretraining_full_18/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_18', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_18_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=False, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=True, eval_suffix=None, eval_save_items=False)
+2026-04-03 18:36:22,817 INFO     Vocab size: 17096
+2026-04-03 18:36:23,968 INFO     Model size: 16.8M parameters
+2026-04-03 18:36:32,557 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_18
+2026-04-03 18:36:32,908 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_18_0
+2026-04-03 18:36:36,975 INFO     Validation loss: 3.070554995656101
+2026-04-03 18:36:36,975 INFO     Validation perplexity: 21.553861655695396
+2026-04-03 18:36:44,864 INFO     Validation (strided) loss: 3.039500581540704
+2026-04-03 18:36:44,865 INFO     Validation (strided) perplexity: 20.894805377371437
+2026-04-03 18:36:48,439 INFO     Test loss: 3.012122227544128
+2026-04-03 18:36:48,439 INFO     Test perplexity: 20.33050012219719
+2026-04-03 18:52:58,249 INFO     Test (strided) loss: 2.980238127650929
+2026-04-03 18:52:58,249 INFO     Test (strided) perplexity: 19.69250541653288

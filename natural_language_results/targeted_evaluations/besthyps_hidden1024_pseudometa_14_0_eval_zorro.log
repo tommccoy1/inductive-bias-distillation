@@ -1,0 +1,33 @@
+2026-04-04 10:59:32,910 INFO     Namespace(directory='CHILDES/pretraining_full_14/', add_eos=False, batch_size=10, shuffle=False, architecture='LSTM', n_embd=1024, n_positions=256, n_head=12, n_layer=2, dropout=0.4, pretrained_name='weights/pseudo_meta_lm_hidden1024_14', pretrained_vocab_size=15, n_epochs=64, eval_every=100, weight_decay=0.01, learning_rate=0.0005, lr_scheduler_type='cosine', warmup_proportion=0.06, patience=None, lr_decay_patience=None, model_name='besthyps_hidden1024_pseudometa_14_0', model_index=None, weight_dir='weights/', log_dir='logs/', eval=True, eval_generate=False, eval_zorro=True, eval_recursion=False, eval_priming=False, eval_scamp_plausible=False, eval_scamp_implausible=False, eval_blimp=False, eval_test=False, eval_suffix='zorro', eval_save_items=False)
+2026-04-04 10:59:47,680 INFO     Vocab size: 17096
+2026-04-04 10:59:48,763 INFO     Model size: 16.8M parameters
+2026-04-04 10:59:57,301 INFO     Loading model checkpoint from weights/pseudo_meta_lm_hidden1024_14
+2026-04-04 10:59:57,624 INFO     Loading model checkpoint from weights/besthyps_hidden1024_pseudometa_14_0
+2026-04-04 11:00:01,001 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-across_1_adjective 1685 2000 0.8425
+2026-04-04 11:00:03,990 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_determiner_noun-between_neighbors 1796 2000 0.898
+2026-04-04 11:00:07,114 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_prepositional_phrase 1190 2000 0.595
+2026-04-04 11:00:10,239 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-across_relative_clause 1325 2000 0.6625
+2026-04-04 11:00:13,424 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_question_with_aux 1637 2000 0.8185
+2026-04-04 11:00:16,437 INFO     ZORRO MINIMAL PAIR RESULTS:agreement_subject_verb-in_simple_question 1613 2000 0.8065
+2026-04-04 11:00:19,582 INFO     ZORRO MINIMAL PAIR RESULTS:anaphor_agreement-pronoun_gender 1805 2000 0.9025
+2026-04-04 11:00:22,552 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-dropped_argument 1793 2000 0.8965
+2026-04-04 11:00:25,739 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-swapped_arguments 1981 2000 0.9905
+2026-04-04 11:00:28,350 INFO     ZORRO MINIMAL PAIR RESULTS:argument_structure-transitive 1373 2000 0.6865
+2026-04-04 11:00:31,681 INFO     ZORRO MINIMAL PAIR RESULTS:binding-principle_a 1615 2000 0.8075
+2026-04-04 11:00:34,881 INFO     ZORRO MINIMAL PAIR RESULTS:case-subjective_pronoun 1998 2000 0.999
+2026-04-04 11:00:38,397 INFO     ZORRO MINIMAL PAIR RESULTS:ellipsis-n_bar 1063 2000 0.5315
+2026-04-04 11:00:41,770 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_object 1909 2000 0.9545
+2026-04-04 11:00:45,118 INFO     ZORRO MINIMAL PAIR RESULTS:filler-gap-wh_question_subject 1985 2000 0.9925
+2026-04-04 11:00:48,368 INFO     ZORRO MINIMAL PAIR RESULTS:irregular-verb 1597 2000 0.7985
+2026-04-04 11:00:51,720 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-adjunct_island 1228 2000 0.614
+2026-04-04 11:00:54,911 INFO     ZORRO MINIMAL PAIR RESULTS:island-effects-coordinate_structure_constraint 1472 2000 0.736
+2026-04-04 11:00:57,979 INFO     ZORRO MINIMAL PAIR RESULTS:local_attractor-in_question_with_aux 1915 2000 0.9575
+2026-04-04 11:01:01,116 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-matrix_question 1401 2000 0.7005
+2026-04-04 11:01:04,336 INFO     ZORRO MINIMAL PAIR RESULTS:npi_licensing-only_npi_licensor 1879 2000 0.9395
+2026-04-04 11:01:07,512 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-existential_there 1854 2000 0.927
+2026-04-04 11:01:10,932 INFO     ZORRO MINIMAL PAIR RESULTS:quantifiers-superlative 1140 2000 0.57
+2026-04-04 11:01:10,932 INFO     ZORRO MINIMAL PAIR RESULTS: OVERALL: 37254 46000 0.8098695652173913
+2026-04-04 11:01:14,784 INFO     Validation loss: 3.0685474900780636
+2026-04-04 11:01:14,784 INFO     Validation perplexity: 21.51063556102347
+2026-04-04 11:01:22,692 INFO     Validation (strided) loss: 3.0376267604284792
+2026-04-04 11:01:22,694 INFO     Validation (strided) perplexity: 20.85568890999619
